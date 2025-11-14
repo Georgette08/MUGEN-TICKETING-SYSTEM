@@ -17,7 +17,12 @@ namespace MUGEN_SYSTEM
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }
