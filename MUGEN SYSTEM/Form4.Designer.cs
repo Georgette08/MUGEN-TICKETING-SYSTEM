@@ -1,6 +1,6 @@
 ﻿namespace MUGEN_SYSTEM
 {
-    partial class Form4
+    partial class AdminDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,12 +43,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -203,14 +203,25 @@
             this.panel2.Size = new System.Drawing.Size(686, 247);
             this.panel2.TabIndex = 1;
             // 
-            // panel3
+            // label7
             // 
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(547, 26);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(107, 150);
-            this.panel3.TabIndex = 10;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(75, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(424, 24);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "SHINKANSEN TERMINAL BULLET TRAIN";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(250, 148);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(188, 63);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Admin!";
             // 
             // label3
             // 
@@ -222,15 +233,14 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Welcome";
             // 
-            // label6
+            // panel3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(250, 148);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(188, 63);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Admin!";
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.Location = new System.Drawing.Point(547, 26);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(107, 150);
+            this.panel3.TabIndex = 10;
             // 
             // panel6
             // 
@@ -250,17 +260,7 @@
             this.panel7.Size = new System.Drawing.Size(339, 166);
             this.panel7.TabIndex = 14;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(75, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(424, 24);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "SHINKANSEN TERMINAL BULLET TRAIN";
-            // 
-            // Form4
+            // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -271,8 +271,8 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Name = "AdminDashboard";
+            this.Text = "ADMIN DASHBOARD";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);

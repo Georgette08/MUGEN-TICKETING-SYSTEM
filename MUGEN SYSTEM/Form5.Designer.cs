@@ -159,7 +159,7 @@
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(567, 120);
+            this.button9.Location = new System.Drawing.Point(490, 150);
             this.button9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 27);
@@ -172,7 +172,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(567, 77);
+            this.button8.Location = new System.Drawing.Point(490, 115);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(88, 27);
@@ -185,7 +185,7 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(452, 120);
+            this.button7.Location = new System.Drawing.Point(490, 80);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(88, 27);
@@ -198,7 +198,7 @@
             this.btnADD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.btnADD.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnADD.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnADD.Location = new System.Drawing.Point(452, 77);
+            this.btnADD.Location = new System.Drawing.Point(490, 47);
             this.btnADD.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnADD.Name = "btnADD";
             this.btnADD.Size = new System.Drawing.Size(88, 27);

@@ -357,7 +357,7 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button7.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(452, 77);
+            this.button7.Location = new System.Drawing.Point(505, 52);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(88, 27);
             this.button7.TabIndex = 14;
@@ -369,7 +369,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button8.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(452, 120);
+            this.button8.Location = new System.Drawing.Point(505, 85);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(88, 27);
             this.button8.TabIndex = 15;
@@ -381,7 +381,7 @@
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button9.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(565, 77);
+            this.button9.Location = new System.Drawing.Point(505, 124);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 27);
             this.button9.TabIndex = 16;
@@ -393,7 +393,7 @@
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.button10.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(565, 120);
+            this.button10.Location = new System.Drawing.Point(505, 161);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 27);
             this.button10.TabIndex = 17;

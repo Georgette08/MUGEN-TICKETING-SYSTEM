@@ -50,6 +50,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCustomers = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -71,8 +73,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -288,6 +290,24 @@
             this.panel5.Size = new System.Drawing.Size(271, 158);
             this.panel5.TabIndex = 10;
             // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Location = new System.Drawing.Point(130, 96);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(121, 21);
+            this.textBox6.TabIndex = 20;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(9, 96);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 16);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "SEAT NUMBER";
+            // 
             // panel6
             // 
             this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
@@ -400,7 +420,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(65, 271);
+            this.label16.Location = new System.Drawing.Point(65, 286);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 15);
             this.label16.TabIndex = 2;
@@ -409,7 +429,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(166, 81);
+            this.textBox1.Location = new System.Drawing.Point(166, 78);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(161, 21);
             this.textBox1.TabIndex = 3;
@@ -417,7 +437,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(166, 265);
+            this.textBox2.Location = new System.Drawing.Point(166, 242);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(161, 21);
             this.textBox2.TabIndex = 4;
@@ -425,7 +445,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(166, 124);
+            this.textBox3.Location = new System.Drawing.Point(166, 118);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(161, 21);
             this.textBox3.TabIndex = 13;
@@ -434,7 +454,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(65, 84);
+            this.label17.Location = new System.Drawing.Point(65, 124);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(61, 15);
             this.label17.TabIndex = 14;
@@ -444,7 +464,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(65, 127);
+            this.label18.Location = new System.Drawing.Point(65, 166);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 15);
             this.label18.TabIndex = 15;
@@ -454,7 +474,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(65, 175);
+            this.label3.Location = new System.Drawing.Point(65, 209);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 15);
             this.label3.TabIndex = 16;
@@ -463,7 +483,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(166, 172);
+            this.textBox4.Location = new System.Drawing.Point(166, 160);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(161, 21);
             this.textBox4.TabIndex = 17;
@@ -472,7 +492,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(65, 223);
+            this.label19.Location = new System.Drawing.Point(65, 245);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(69, 15);
             this.label19.TabIndex = 18;
@@ -481,7 +501,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(166, 220);
+            this.textBox5.Location = new System.Drawing.Point(166, 203);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(161, 21);
             this.textBox5.TabIndex = 19;
@@ -489,6 +509,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.label20);
             this.panel3.Controls.Add(this.textBox5);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.textBox4);
@@ -508,23 +530,23 @@
             this.panel3.Size = new System.Drawing.Size(423, 404);
             this.panel3.TabIndex = 8;
             // 
-            // label15
+            // label20
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(9, 96);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 16);
-            this.label15.TabIndex = 14;
-            this.label15.Text = "SEAT NUMBER";
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(65, 81);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(70, 15);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "Passenger ID";
             // 
-            // textBox6
+            // textBox7
             // 
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(130, 96);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 21);
-            this.textBox6.TabIndex = 20;
+            this.textBox7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(166, 283);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(161, 21);
+            this.textBox7.TabIndex = 21;
             // 
             // Form3
             // 
@@ -604,5 +626,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
