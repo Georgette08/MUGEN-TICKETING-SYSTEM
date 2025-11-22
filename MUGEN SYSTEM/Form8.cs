@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MUGEN_SYSTEM
 {
-    public partial class Form8 : Form
+    public partial class FaresDashboard : Form
     {
-        public Form8()
+        public FaresDashboard()
         {
             InitializeComponent();
         }

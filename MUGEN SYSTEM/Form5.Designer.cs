@@ -1,6 +1,6 @@
 ﻿namespace MUGEN_SYSTEM
 {
-    partial class Form5
+    partial class StationsDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StationsDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLineServed = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboStationName = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvStations = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
@@ -102,10 +102,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txtLineServed);
+            this.panel2.Controls.Add(this.txtCity);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.comboStationName);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button7);
@@ -121,21 +121,21 @@
             this.panel2.Size = new System.Drawing.Size(684, 201);
             this.panel2.TabIndex = 2;
             // 
-            // textBox3
+            // txtLineServed
             // 
-            this.textBox3.Location = new System.Drawing.Point(245, 153);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(140, 22);
-            this.textBox3.TabIndex = 18;
+            this.txtLineServed.Location = new System.Drawing.Point(245, 153);
+            this.txtLineServed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtLineServed.Name = "txtLineServed";
+            this.txtLineServed.Size = new System.Drawing.Size(140, 22);
+            this.txtLineServed.TabIndex = 18;
             // 
-            // textBox2
+            // txtCity
             // 
-            this.textBox2.Location = new System.Drawing.Point(245, 120);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(140, 22);
-            this.textBox2.TabIndex = 17;
+            this.txtCity.Location = new System.Drawing.Point(245, 120);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(140, 22);
+            this.txtCity.TabIndex = 17;
             // 
             // textBox1
             // 
@@ -145,14 +145,14 @@
             this.textBox1.Size = new System.Drawing.Size(140, 22);
             this.textBox1.TabIndex = 16;
             // 
-            // comboBox1
+            // comboStationName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(245, 85);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(140, 23);
-            this.comboBox1.TabIndex = 15;
+            this.comboStationName.FormattingEnabled = true;
+            this.comboStationName.Location = new System.Drawing.Point(245, 85);
+            this.comboStationName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.comboStationName.Name = "comboStationName";
+            this.comboStationName.Size = new System.Drawing.Size(140, 23);
+            this.comboStationName.TabIndex = 15;
             // 
             // button9
             // 
@@ -205,6 +205,7 @@
             this.btnADD.TabIndex = 11;
             this.btnADD.Text = "ADD";
             this.btnADD.UseVisualStyleBackColor = false;
+            this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
             // 
             // label6
             // 
@@ -260,7 +261,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgvStations);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(209, 244);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -268,15 +269,15 @@
             this.panel3.Size = new System.Drawing.Size(683, 211);
             this.panel3.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvStations
             // 
-            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 58);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(650, 137);
-            this.dataGridView1.TabIndex = 8;
+            this.dgvStations.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
+            this.dgvStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStations.Location = new System.Drawing.Point(19, 58);
+            this.dgvStations.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dgvStations.Name = "dgvStations";
+            this.dgvStations.Size = new System.Drawing.Size(650, 137);
+            this.dgvStations.TabIndex = 8;
             // 
             // panel4
             // 
@@ -406,7 +407,7 @@
             this.button5.Text = "DASHBOARD";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // Form5
+            // StationsDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -418,14 +419,16 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Form5";
-            this.Text = "Form5";
+            this.Name = "StationsDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "MANAGE STATIONS";
+            this.Load += new System.EventHandler(this.StationsDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStations)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -447,15 +450,15 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLineServed;
+        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboStationName;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnADD;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvStations;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

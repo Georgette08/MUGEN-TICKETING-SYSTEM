@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUserAccounts = new System.Windows.Forms.Button();
+            this.btnFares = new System.Windows.Forms.Button();
+            this.btnSchedules = new System.Windows.Forms.Button();
+            this.btnTrains = new System.Windows.Forms.Button();
+            this.btnStations = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,28 +57,29 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnLogOut);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnUserAccounts);
+            this.panel1.Controls.Add(this.btnFares);
+            this.panel1.Controls.Add(this.btnSchedules);
+            this.panel1.Controls.Add(this.btnTrains);
+            this.panel1.Controls.Add(this.btnStations);
             this.panel1.Location = new System.Drawing.Point(3, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(194, 430);
             this.panel1.TabIndex = 0;
             // 
-            // button6
+            // btnLogOut
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(89, 349);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 29);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "LOG OUT";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(89, 349);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(78, 29);
+            this.btnLogOut.TabIndex = 7;
+            this.btnLogOut.Text = "LOG OUT";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // label5
             // 
@@ -102,55 +103,60 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "MUGEN TICKETING ";
             // 
-            // button5
+            // btnUserAccounts
             // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(22, 253);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 29);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "USER ACCOUNTS";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnUserAccounts.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserAccounts.Location = new System.Drawing.Point(22, 253);
+            this.btnUserAccounts.Name = "btnUserAccounts";
+            this.btnUserAccounts.Size = new System.Drawing.Size(145, 29);
+            this.btnUserAccounts.TabIndex = 4;
+            this.btnUserAccounts.Text = "USER ACCOUNTS";
+            this.btnUserAccounts.UseVisualStyleBackColor = true;
+            this.btnUserAccounts.Click += new System.EventHandler(this.btnUserAccounts_Click);
             // 
-            // button4
+            // btnFares
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(22, 218);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(145, 29);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "MANAGE FARES";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnFares.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFares.Location = new System.Drawing.Point(22, 218);
+            this.btnFares.Name = "btnFares";
+            this.btnFares.Size = new System.Drawing.Size(145, 29);
+            this.btnFares.TabIndex = 3;
+            this.btnFares.Text = "MANAGE FARES";
+            this.btnFares.UseVisualStyleBackColor = true;
+            this.btnFares.Click += new System.EventHandler(this.btnFares_Click);
             // 
-            // button3
+            // btnSchedules
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(22, 183);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 29);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "MANAGE SCHEDULES";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSchedules.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.Location = new System.Drawing.Point(22, 183);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(145, 29);
+            this.btnSchedules.TabIndex = 2;
+            this.btnSchedules.Text = "MANAGE SCHEDULES";
+            this.btnSchedules.UseVisualStyleBackColor = true;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
             // 
-            // button2
+            // btnTrains
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(22, 148);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "MANAGE TRAINS";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTrains.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrains.Location = new System.Drawing.Point(22, 148);
+            this.btnTrains.Name = "btnTrains";
+            this.btnTrains.Size = new System.Drawing.Size(145, 29);
+            this.btnTrains.TabIndex = 1;
+            this.btnTrains.Text = "MANAGE TRAINS";
+            this.btnTrains.UseVisualStyleBackColor = true;
+            this.btnTrains.Click += new System.EventHandler(this.btnTrains_Click);
             // 
-            // button1
+            // btnStations
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(22, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "MANAGE STATIONS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStations.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStations.Location = new System.Drawing.Point(22, 113);
+            this.btnStations.Name = "btnStations";
+            this.btnStations.Size = new System.Drawing.Size(145, 29);
+            this.btnStations.TabIndex = 0;
+            this.btnStations.Text = "MANAGE STATIONS";
+            this.btnStations.UseVisualStyleBackColor = true;
+            this.btnStations.Click += new System.EventHandler(this.btnStations_Click);
             // 
             // panel4
             // 
@@ -272,7 +278,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "AdminDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADMIN DASHBOARD";
+            this.Load += new System.EventHandler(this.AdminDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -289,16 +297,16 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSchedules;
+        private System.Windows.Forms.Button btnTrains;
+        private System.Windows.Forms.Button btnStations;
+        private System.Windows.Forms.Button btnUserAccounts;
+        private System.Windows.Forms.Button btnFares;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;

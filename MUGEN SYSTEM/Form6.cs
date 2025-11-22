@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MUGEN_SYSTEM
 {
-    public partial class Form6 : Form
+    public partial class TrainsDashnoard : Form
     {
-        public Form6()
+        public TrainsDashnoard()
         {
             InitializeComponent();
         }

@@ -12,9 +12,11 @@ namespace MUGEN_SYSTEM
 {
     public partial class StaffDashboard : Form
     {
-        public StaffDashboard()
+        private UserAccount userLogIn;
+        public StaffDashboard(UserAccount userLogIn)
         {
             InitializeComponent();
+            this.userLogIn = userLogIn;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -23,6 +25,11 @@ namespace MUGEN_SYSTEM
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StaffDashboard_Load(object sender, EventArgs e)
         {
 
         }
