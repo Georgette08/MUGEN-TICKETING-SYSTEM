@@ -33,13 +33,11 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtLineServed = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboStationName = new System.Windows.Forms.ComboBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnADD = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,6 +57,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.combolLineServed = new System.Windows.Forms.ComboBox();
+            this.comboCity = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -102,13 +102,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel2.Controls.Add(this.txtLineServed);
-            this.panel2.Controls.Add(this.txtCity);
+            this.panel2.Controls.Add(this.comboCity);
+            this.panel2.Controls.Add(this.combolLineServed);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.comboStationName);
-            this.panel2.Controls.Add(this.button9);
-            this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.btnClear);
+            this.panel2.Controls.Add(this.btnUpdate);
+            this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnADD);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
@@ -120,22 +120,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(684, 201);
             this.panel2.TabIndex = 2;
-            // 
-            // txtLineServed
-            // 
-            this.txtLineServed.Location = new System.Drawing.Point(245, 153);
-            this.txtLineServed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtLineServed.Name = "txtLineServed";
-            this.txtLineServed.Size = new System.Drawing.Size(140, 22);
-            this.txtLineServed.TabIndex = 18;
-            // 
-            // txtCity
-            // 
-            this.txtCity.Location = new System.Drawing.Point(245, 120);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(140, 22);
-            this.txtCity.TabIndex = 17;
             // 
             // textBox1
             // 
@@ -154,44 +138,47 @@
             this.comboStationName.Size = new System.Drawing.Size(140, 23);
             this.comboStationName.TabIndex = 15;
             // 
-            // button9
+            // btnClear
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(490, 150);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(88, 27);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "CLEAR";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnClear.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClear.Location = new System.Drawing.Point(490, 150);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(88, 27);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button8
+            // btnUpdate
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(490, 115);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(88, 27);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "UPDATE";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdate.Location = new System.Drawing.Point(490, 115);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(88, 27);
+            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // button7
+            // btnDelete
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(490, 80);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 27);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "DELETE";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(490, 80);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(88, 27);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnADD
             // 
@@ -210,7 +197,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(64, 150);
+            this.label6.Location = new System.Drawing.Point(64, 161);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 15);
@@ -220,7 +207,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 120);
+            this.label5.Location = new System.Drawing.Point(64, 127);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 15);
@@ -272,12 +259,14 @@
             // dgvStations
             // 
             this.dgvStations.AccessibleRole = System.Windows.Forms.AccessibleRole.OutlineButton;
+            this.dgvStations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStations.Location = new System.Drawing.Point(19, 58);
             this.dgvStations.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvStations.Name = "dgvStations";
             this.dgvStations.Size = new System.Drawing.Size(650, 137);
             this.dgvStations.TabIndex = 8;
+            this.dgvStations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStations_CellContentClick);
             // 
             // panel4
             // 
@@ -407,6 +396,22 @@
             this.button5.Text = "DASHBOARD";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // combolLineServed
+            // 
+            this.combolLineServed.FormattingEnabled = true;
+            this.combolLineServed.Location = new System.Drawing.Point(245, 158);
+            this.combolLineServed.Name = "combolLineServed";
+            this.combolLineServed.Size = new System.Drawing.Size(140, 23);
+            this.combolLineServed.TabIndex = 18;
+            // 
+            // comboCity
+            // 
+            this.comboCity.FormattingEnabled = true;
+            this.comboCity.Location = new System.Drawing.Point(245, 125);
+            this.comboCity.Name = "comboCity";
+            this.comboCity.Size = new System.Drawing.Size(140, 23);
+            this.comboCity.TabIndex = 19;
+            // 
             // StationsDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -450,13 +455,11 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtLineServed;
-        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboStationName;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.DataGridView dgvStations;
         private System.Windows.Forms.Button button1;
@@ -469,5 +472,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox combolLineServed;
+        private System.Windows.Forms.ComboBox comboCity;
     }
 }
