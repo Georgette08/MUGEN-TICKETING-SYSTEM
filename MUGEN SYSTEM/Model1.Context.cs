@@ -16,9 +16,8 @@ namespace MUGEN_SYSTEM
     public partial class MugenSystemDBEntities : DbContext
     {
         public MugenSystemDBEntities()
-            : base("name=MugenSystemDBEntities") 
+            : base("name=MugenSystemDBEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9bf258a7a94d427fb0ddee069fb35e11" Name="Diagram1">
-        <EntityTypeShape EntityType="MugenSystemDBModel.Bookings" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.Fare" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.Passengers" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.Schedule" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.Stations" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.Trains" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="MugenSystemDBModel.UserAccount" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Bookings_Fare" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Bookings_Passengers" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Bookings_Schedule" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Bookings_UserAccount" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Fare_Stations" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Fare_Stations1" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Schedule_Stations" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Schedule_Stations1" ManuallyRouted="false" />
-        <AssociationConnector Association="MugenSystemDBModel.FK_Schedule_Trains" ManuallyRouted="false" />
+      <Diagram DiagramId="9bf258a7a94d427fb0ddee069fb35e11" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="MugenSystemDBModel.Bookings" PointX="5.25" PointY="5.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.Fare" PointX="3" PointY="8.125" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.Passengers" PointX="3" PointY="0.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.Schedule" PointX="3" PointY="4.25" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.Stations" PointX="0.75" PointY="4.5" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.sysdiagrams" PointX="5.75" PointY="2" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.Trains" PointX="7.375" PointY="4.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MugenSystemDBModel.UserAccount" PointX="3" PointY="11.75" Width="1.5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Bookings_Fare" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Bookings_Passengers" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Bookings_Schedule" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Bookings_UserAccount" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Fare_Stations" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Fare_Stations1" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Schedule_Stations" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Schedule_Stations1" />
+        <AssociationConnector ManuallyRouted="false" Association="MugenSystemDBModel.FK_Schedule_Trains" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

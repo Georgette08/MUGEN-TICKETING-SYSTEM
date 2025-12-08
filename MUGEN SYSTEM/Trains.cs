@@ -24,6 +24,8 @@ namespace MUGEN_SYSTEM
         public string TrainName { get; set; }
         public Nullable<int> Capacity { get; set; }
         public string Status { get; set; }
+        public string Series { get; set; }
+        public string TrainLength { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }

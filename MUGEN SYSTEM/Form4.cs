@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MUGENTICKETSYSTEM;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,40 +43,42 @@ namespace MUGEN_SYSTEM
 
         private void btnTrains_Click(object sender, EventArgs e)
         {
-            TrainsDashnoard trains = new TrainsDashnoard(); 
+            TrainsDashboard trains = new TrainsDashboard(this.userLogIn); 
             ShowandManageForm(trains); 
         }
 
         private void btnSchedules_Click(object sender, EventArgs e)
         {
-            SchedulesDashboard schedules = new SchedulesDashboard(); 
+            SchedulesDashboard schedules = new SchedulesDashboard(this.userLogIn); 
             ShowandManageForm(schedules);
         }
 
         private void btnFares_Click(object sender, EventArgs e)
         {
-            FaresDashboard fares = new FaresDashboard();   
+            FaresDashboard fares = new FaresDashboard(this.userLogIn);   
             ShowandManageForm(fares);
         }
 
         private void btnUserAccounts_Click(object sender, EventArgs e)
         {
-            UserDashboard Account = new UserDashboard();
+            UserDashboard Account = new UserDashboard(this.userLogIn);
             ShowandManageForm(Account);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show(
-                "Are you sure you want to log out?",
-                "Confirm Logout",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+               "Are you sure you want to log out?",
+               "Confirm Logout",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question
+           );
 
             if (confirmResult == DialogResult.Yes)
-            { 
-                this.Close();         
+            {
+                LoginForm login = new LoginForm();
+
+                ShowandManageForm(login);
             }
         }
     }

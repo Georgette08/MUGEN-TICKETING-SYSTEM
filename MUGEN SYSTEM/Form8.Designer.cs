@@ -422,6 +422,7 @@
             this.Name = "FaresDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MANAGE FARES";
+            this.Load += new System.EventHandler(this.FaresDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

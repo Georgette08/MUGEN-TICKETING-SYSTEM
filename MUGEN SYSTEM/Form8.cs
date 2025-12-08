@@ -12,9 +12,16 @@ namespace MUGEN_SYSTEM
 {
     public partial class FaresDashboard : Form
     {
-        public FaresDashboard()
+        private readonly UserAccount userLogIn;
+        public FaresDashboard(UserAccount userLogIn)
         {
             InitializeComponent();
+            this.userLogIn = userLogIn;
+        }
+
+        private void FaresDashboard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
