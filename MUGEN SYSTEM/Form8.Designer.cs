@@ -33,18 +33,18 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnAccounts = new System.Windows.Forms.Button();
+            this.btnSchedules = new System.Windows.Forms.Button();
+            this.btnTrains = new System.Windows.Forms.Button();
+            this.btnStations = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataFareGridView = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,19 +52,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.comboClass = new System.Windows.Forms.ComboBox();
+            this.comboArrivalStation = new System.Windows.Forms.ComboBox();
+            this.comboDepartureStation = new System.Windows.Forms.ComboBox();
+            this.txtFareID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataFareGridView)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -101,12 +100,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnLogOut);
+            this.panel2.Controls.Add(this.btnDashboard);
+            this.panel2.Controls.Add(this.btnAccounts);
+            this.panel2.Controls.Add(this.btnSchedules);
+            this.panel2.Controls.Add(this.btnTrains);
+            this.panel2.Controls.Add(this.btnStations);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(2, 34);
@@ -114,65 +113,65 @@
             this.panel2.Size = new System.Drawing.Size(194, 427);
             this.panel2.TabIndex = 1;
             // 
-            // button6
+            // btnLogOut
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(93, 354);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "LOG  OUT";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(93, 354);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 9;
+            this.btnLogOut.Text = "LOG  OUT";
+            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnDashboard
             // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(26, 265);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 29);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "DASHBOARD";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnDashboard.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Location = new System.Drawing.Point(26, 265);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(145, 29);
+            this.btnDashboard.TabIndex = 8;
+            this.btnDashboard.Text = "DASHBOARD";
+            this.btnDashboard.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnAccounts
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(26, 229);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(145, 29);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "USER ACCOUNTS";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAccounts.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccounts.Location = new System.Drawing.Point(26, 229);
+            this.btnAccounts.Name = "btnAccounts";
+            this.btnAccounts.Size = new System.Drawing.Size(145, 29);
+            this.btnAccounts.TabIndex = 7;
+            this.btnAccounts.Text = "USER ACCOUNTS";
+            this.btnAccounts.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnSchedules
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(26, 194);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 29);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "MANAGE SCHEDULES";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSchedules.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedules.Location = new System.Drawing.Point(26, 194);
+            this.btnSchedules.Name = "btnSchedules";
+            this.btnSchedules.Size = new System.Drawing.Size(145, 29);
+            this.btnSchedules.TabIndex = 6;
+            this.btnSchedules.Text = "MANAGE SCHEDULES";
+            this.btnSchedules.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnTrains
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(26, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 29);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "MANAGE TRAINS";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTrains.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrains.Location = new System.Drawing.Point(26, 159);
+            this.btnTrains.Name = "btnTrains";
+            this.btnTrains.Size = new System.Drawing.Size(145, 29);
+            this.btnTrains.TabIndex = 5;
+            this.btnTrains.Text = "MANAGE TRAINS";
+            this.btnTrains.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnStations
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(26, 124);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 29);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "MANAGE STATIONS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStations.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStations.Location = new System.Drawing.Point(26, 124);
+            this.btnStations.Name = "btnStations";
+            this.btnStations.Size = new System.Drawing.Size(145, 29);
+            this.btnStations.TabIndex = 2;
+            this.btnStations.Text = "MANAGE STATIONS";
+            this.btnStations.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -219,20 +218,22 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Controls.Add(this.dataFareGridView);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Location = new System.Drawing.Point(202, 273);
+            this.panel4.Location = new System.Drawing.Point(202, 240);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(690, 188);
+            this.panel4.Size = new System.Drawing.Size(690, 221);
             this.panel4.TabIndex = 3;
             // 
-            // dataGridView1
+            // dataFareGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 56);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(656, 118);
-            this.dataGridView1.TabIndex = 1;
+            this.dataFareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataFareGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataFareGridView.Location = new System.Drawing.Point(20, 56);
+            this.dataFareGridView.Name = "dataFareGridView";
+            this.dataFareGridView.Size = new System.Drawing.Size(656, 118);
+            this.dataFareGridView.TabIndex = 1;
+            this.dataFareGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataFareGridView_CellContentClick);
             // 
             // panel5
             // 
@@ -258,7 +259,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(73, 85);
+            this.label5.Location = new System.Drawing.Point(73, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 15);
             this.label5.TabIndex = 4;
@@ -268,7 +269,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 124);
+            this.label6.Location = new System.Drawing.Point(73, 109);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 15);
             this.label6.TabIndex = 5;
@@ -278,7 +279,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(73, 159);
+            this.label8.Location = new System.Drawing.Point(73, 136);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 15);
             this.label8.TabIndex = 7;
@@ -288,7 +289,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(73, 194);
+            this.label9.Location = new System.Drawing.Point(73, 159);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 15);
             this.label9.TabIndex = 8;
@@ -298,15 +299,14 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.button10);
-            this.panel3.Controls.Add(this.button9);
-            this.panel3.Controls.Add(this.button8);
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.comboBox3);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Controls.Add(this.btnDelete);
+            this.panel3.Controls.Add(this.btnAdd);
+            this.panel3.Controls.Add(this.txtAmount);
+            this.panel3.Controls.Add(this.comboClass);
+            this.panel3.Controls.Add(this.comboArrivalStation);
+            this.panel3.Controls.Add(this.comboDepartureStation);
+            this.panel3.Controls.Add(this.txtFareID);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
@@ -315,99 +315,91 @@
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(202, 34);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(690, 233);
+            this.panel3.Size = new System.Drawing.Size(690, 200);
             this.panel3.TabIndex = 2;
             // 
-            // button10
+            // btnUpdate
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(505, 161);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(88, 27);
-            this.button10.TabIndex = 17;
-            this.button10.Text = "CLEAR";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdate.Location = new System.Drawing.Point(505, 130);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(88, 27);
+            this.btnUpdate.TabIndex = 16;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // button9
+            // btnDelete
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(505, 124);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(88, 27);
-            this.button9.TabIndex = 16;
-            this.button9.Text = "UPDATE";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(505, 97);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(88, 27);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button8
+            // btnAdd
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(505, 85);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(88, 27);
-            this.button8.TabIndex = 15;
-            this.button8.Text = "DELETE";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Location = new System.Drawing.Point(505, 64);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(88, 27);
+            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button7
+            // txtAmount
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(505, 52);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 27);
-            this.button7.TabIndex = 14;
-            this.button7.Text = "ADD";
-            this.button7.UseVisualStyleBackColor = false;
+            this.txtAmount.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmount.Location = new System.Drawing.Point(186, 130);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(146, 21);
+            this.txtAmount.TabIndex = 13;
             // 
-            // textBox2
+            // comboClass
             // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(186, 159);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(146, 21);
-            this.textBox2.TabIndex = 13;
+            this.comboClass.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboClass.FormattingEnabled = true;
+            this.comboClass.Location = new System.Drawing.Point(186, 157);
+            this.comboClass.Name = "comboClass";
+            this.comboClass.Size = new System.Drawing.Size(146, 23);
+            this.comboClass.TabIndex = 12;
             // 
-            // comboBox3
+            // comboArrivalStation
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(186, 192);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(146, 23);
-            this.comboBox3.TabIndex = 12;
+            this.comboArrivalStation.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboArrivalStation.FormattingEnabled = true;
+            this.comboArrivalStation.Location = new System.Drawing.Point(186, 101);
+            this.comboArrivalStation.Name = "comboArrivalStation";
+            this.comboArrivalStation.Size = new System.Drawing.Size(146, 23);
+            this.comboArrivalStation.TabIndex = 11;
             // 
-            // comboBox2
+            // comboDepartureStation
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(186, 118);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 23);
-            this.comboBox2.TabIndex = 11;
+            this.comboDepartureStation.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDepartureStation.FormattingEnabled = true;
+            this.comboDepartureStation.Location = new System.Drawing.Point(186, 72);
+            this.comboDepartureStation.Name = "comboDepartureStation";
+            this.comboDepartureStation.Size = new System.Drawing.Size(146, 23);
+            this.comboDepartureStation.TabIndex = 10;
+            this.comboDepartureStation.SelectedIndexChanged += new System.EventHandler(this.comboDepartureStation_SelectedIndexChanged);
             // 
-            // comboBox1
+            // txtFareID
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(186, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 23);
-            this.comboBox1.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(186, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 21);
-            this.textBox1.TabIndex = 9;
+            this.txtFareID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFareID.Location = new System.Drawing.Point(186, 45);
+            this.txtFareID.Name = "txtFareID";
+            this.txtFareID.Size = new System.Drawing.Size(146, 21);
+            this.txtFareID.TabIndex = 9;
             // 
             // FaresDashboard
             // 
@@ -428,7 +420,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataFareGridView)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -447,29 +439,28 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataFareGridView;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStations;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnDashboard;
+        private System.Windows.Forms.Button btnAccounts;
+        private System.Windows.Forms.Button btnSchedules;
+        private System.Windows.Forms.Button btnTrains;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.TextBox txtFareID;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.ComboBox comboClass;
+        private System.Windows.Forms.ComboBox comboArrivalStation;
+        private System.Windows.Forms.ComboBox comboDepartureStation;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel panel6;
     }
 }

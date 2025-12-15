@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MUGEN_SYSTEM.SchedulesDashboard;
 
 namespace MUGEN_SYSTEM
 {
@@ -19,12 +20,12 @@ namespace MUGEN_SYSTEM
         private List<String> Series = new List<String>();
         private List<String> Length = new List<String>();
         private List<int> Capacity = new List<int>();
+        private List<ScheduleComboItem> allStations = new List<ScheduleComboItem>();
         public TrainsDashboard(UserAccount userLogin)
         {
             InitializeComponent();
             this.userLogIn = userLogin;
         }
-
         private void TrainsDashboard_Load(object sender, EventArgs e)
         {
             LoadTrainsDataGrid();
@@ -36,7 +37,6 @@ namespace MUGEN_SYSTEM
             Capacity.Clear();
 
             comboTrainName.Items.Add("Nozomi");
-            comboTrainName.Items.Add("Mizuho");
             comboTrainName.Items.Add("Sakura");
             comboTrainName.Items.Add("Hayabusa");
             comboTrainName.Items.Add("Hayate");
@@ -47,13 +47,11 @@ namespace MUGEN_SYSTEM
 
             Series.Add("N700A Series");
             Series.Add("N700 Series");
-            Series.Add("N700 Series");
             Series.Add("E5 Series");
             Series.Add("E5 Series");
             Series.Add("E3 Series");
 
             Length.Add("16 Cars");
-            Length.Add("8 Cars");
             Length.Add("8 Cars");
             Length.Add("10 Cars");
             Length.Add("10 Cars");
@@ -66,6 +64,7 @@ namespace MUGEN_SYSTEM
             Capacity.Add(731);
             Capacity.Add(402);
 
+
             if (comboTrainName.Items.Count > 0)
             {
                 comboTrainName.SelectedIndex = 0;
@@ -74,10 +73,12 @@ namespace MUGEN_SYSTEM
             {
                 comboStatus.SelectedIndex = 0;
             }
-            UpdateDependentFields();
+            UpdateFields();
         }
+
         private void LoadTrainsDataGrid()
         {
+
             using (var db = new MugenSystemDBEntities())
             {
                 var trainsList = db.Trains.Select(t => new
@@ -90,10 +91,9 @@ namespace MUGEN_SYSTEM
                     t.TrainLength
                 }).ToList();
                 dataTrainsGridView.DataSource = trainsList;
-               // dataTrainsGridView.ClearSelection();
             }
         }
-        private void UpdateDependentFields()
+        private void UpdateFields()
         {
             int selectedIndex = comboTrainName.SelectedIndex;
             if (selectedIndex >= 0)
@@ -101,57 +101,56 @@ namespace MUGEN_SYSTEM
                 if (selectedIndex < Series.Count)
                     txtSeries.Text = Series[selectedIndex];
                 if (selectedIndex < Length.Count)
-                    txtLength.Text = Length[selectedIndex]; // ✅ FIX: Ensure txtLength is used
+                    txtLength.Text = Length[selectedIndex];
                 if (selectedIndex < Capacity.Count)
                     txtCapacity.Text = Capacity[selectedIndex].ToString();
-            }
-            else
-            {
-                txtSeries.Clear();
-                txtLength.Clear();
-                txtCapacity.Clear();
+                else
+                {
+                    txtSeries.Clear();
+                    txtLength.Clear();
+                    txtCapacity.Clear();
+                }
             }
         }
         private void ClearInputFields()
         {
-            selectedTrainID = -1;
-            dataTrainsGridView.ClearSelection();
+            {
+                selectedTrainID = -1;
+                dataTrainsGridView.ClearSelection();
 
-            // Clear TextBoxes
-            txtSeries.Clear();
-            txtLength.Clear();
-            txtCapacity.Clear();
+                txtSeries.Clear();
+                txtLength.Clear();
+                txtCapacity.Clear();
+             
+                if (comboTrainName.Items.Count > 0)
+                    comboTrainName.SelectedIndex = 0;
+                if (comboStatus.Items.Count > 0)
+                    comboStatus.SelectedIndex = 0;
 
-            // Reset ComboBoxes
-            if (comboTrainName.Items.Count > 0)
-                comboTrainName.SelectedIndex = 0;
-            if (comboStatus.Items.Count > 0)
-                comboStatus.SelectedIndex = 0;
-
-            // Update dependent fields to show the default selection
-            UpdateDependentFields();
+                UpdateFields();
+            }
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-          
+
             string trainName = comboTrainName.SelectedItem?.ToString();
             string status = comboStatus.SelectedItem?.ToString();
             string series = txtSeries.Text;
-            string length = txtLength.Text; // Use value from read-only TextBox
+            string length = txtLength.Text;
             string capacityText = txtCapacity.Text;
-
+           
             if (!int.TryParse(capacityText, out int CapacityValue))
             {
                 MessageBox.Show("Capacity must be a valid whole number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (string.IsNullOrEmpty(trainName) || string.IsNullOrEmpty(status) ||
-                string.IsNullOrEmpty(series) || string.IsNullOrEmpty(length))
+              string.IsNullOrEmpty(series) || string.IsNullOrEmpty(length))
             {
                 MessageBox.Show("Please ensure all fields are selected/filled.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             try
             {
                 using (var dbTrains = new MugenSystemDBEntities())
@@ -167,7 +166,7 @@ namespace MUGEN_SYSTEM
                         Capacity = CapacityValue,
                         Status = status,
                         Series = series,
-                        TrainLength = length // ✅ FIX: Map to the correct DB property
+                        TrainLength = length
                     };
                     dbTrains.Trains.Add(newTrain);
                     dbTrains.SaveChanges();
@@ -182,14 +181,12 @@ namespace MUGEN_SYSTEM
             LoadTrainsDataGrid();
             ClearInputFields();
         }
-
         private void dataTrainsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             DataGridViewRow row = dataTrainsGridView.Rows[e.RowIndex];
 
-            // Set the tracking ID
             if (row.Cells["TrainID"].Value != null && int.TryParse(row.Cells["TrainID"].Value.ToString(), out int trainId))
             {
                 selectedTrainID = trainId;
@@ -199,41 +196,21 @@ namespace MUGEN_SYSTEM
                 selectedTrainID = -1;
             }
 
-            // Retrieve data from row (using explicit column names used in the anonymous type)
             string name = row.Cells["TrainName"].Value?.ToString();
-            string series = row.Cells["Series"].Value?.ToString();
-            string length = row.Cells["TrainLength"].Value?.ToString(); // Using the alias/correct name
-            string capacity = row.Cells["Capacity"].Value?.ToString();
             string status = row.Cells["Status"].Value?.ToString();
 
-            // Set primary ComboBox
             if (!string.IsNullOrEmpty(name))
             {
                 comboTrainName.SelectedItem = name;
             }
-
-            // Set read-only fields directly
-            txtSeries.Text = series;
-            txtLength.Text = length;
-            txtCapacity.Text = capacity;
-
-            // Set Status ComboBox
             if (!string.IsNullOrEmpty(status))
             {
                 comboStatus.SelectedItem = status;
             }
-
-            // Ensure Train Name is set to avoid null reference errors
             if (comboTrainName.SelectedIndex < 0 && comboTrainName.Items.Count > 0)
             {
                 comboTrainName.SelectedIndex = 0;
             }
-        }
-
-        // Ensure this event is linked to the ComboBox SelectedIndexChanged event
-        private void comboTrainName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateDependentFields();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -245,7 +222,7 @@ namespace MUGEN_SYSTEM
             }
 
             var confirmResult = MessageBox.Show("Are you sure you want to delete this train?",
-                                       "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                         "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmResult == DialogResult.Yes)
             {
@@ -266,11 +243,17 @@ namespace MUGEN_SYSTEM
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred during deletion: {ex.InnerException?.Message ?? ex.Message}",
-                                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 LoadTrainsDataGrid();
                 ClearInputFields();
             }
+        }
+
+
+        private void comboTrainName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateFields();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -309,7 +292,7 @@ namespace MUGEN_SYSTEM
                         trainToUpdate.TrainName = trainName;
                         trainToUpdate.Status = status;
                         trainToUpdate.Series = series;
-                        trainToUpdate.TrainLength = length; // ✅ FIX: Map to the correct DB property
+                        trainToUpdate.TrainLength = length;
                         trainToUpdate.Capacity = CapacityValue;
 
                         dbTrains.SaveChanges();
@@ -320,12 +303,13 @@ namespace MUGEN_SYSTEM
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred during update: {ex.InnerException?.Message ?? ex.Message}",
-                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             LoadTrainsDataGrid();
             ClearInputFields();
         }
+
         private void ShowandManageForm(Form newform)
         {
             this.Hide();
@@ -343,7 +327,7 @@ namespace MUGEN_SYSTEM
 
         private void btnSchecules_Click(object sender, EventArgs e)
         {
-            SchedulesDashboard schedules = new SchedulesDashboard(userLogIn);  
+            SchedulesDashboard schedules = new SchedulesDashboard(userLogIn);
             ShowandManageForm(schedules);
         }
 
@@ -361,7 +345,7 @@ namespace MUGEN_SYSTEM
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            AdminDashboard admin = new AdminDashboard(userLogIn);  
+            AdminDashboard admin = new AdminDashboard(userLogIn);
             ShowandManageForm(admin);
         }
 
@@ -383,3 +367,4 @@ namespace MUGEN_SYSTEM
         }
     }
 }
+

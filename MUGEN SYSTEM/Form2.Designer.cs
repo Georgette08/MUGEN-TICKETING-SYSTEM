@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffDashboard));
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.comboArrival = new System.Windows.Forms.ComboBox();
+            this.comboDeparture = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,17 +43,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataSearchGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCustomer = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSearchGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,10 +70,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(232)))), ((int)(((byte)(244)))));
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.monthCalendar1);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.btnConfirm);
+            this.panel2.Controls.Add(this.monthCalendar);
+            this.panel2.Controls.Add(this.comboArrival);
+            this.panel2.Controls.Add(this.comboDeparture);
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -85,38 +85,39 @@
             this.panel2.Size = new System.Drawing.Size(704, 219);
             this.panel2.TabIndex = 2;
             // 
-            // button2
+            // btnConfirm
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(583, 140);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 27);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "ADD";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConfirm.Location = new System.Drawing.Point(583, 140);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(88, 27);
+            this.btnConfirm.TabIndex = 8;
+            this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // monthCalendar1
+            // monthCalendar
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(316, 47);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 7;
+            this.monthCalendar.Location = new System.Drawing.Point(316, 47);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 7;
             // 
-            // comboBox2
+            // comboArrival
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(158, 137);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 23);
-            this.comboBox2.TabIndex = 6;
+            this.comboArrival.FormattingEnabled = true;
+            this.comboArrival.Location = new System.Drawing.Point(158, 137);
+            this.comboArrival.Name = "comboArrival";
+            this.comboArrival.Size = new System.Drawing.Size(146, 23);
+            this.comboArrival.TabIndex = 6;
             // 
-            // comboBox1
+            // comboDeparture
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(158, 82);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 23);
-            this.comboBox1.TabIndex = 5;
+            this.comboDeparture.FormattingEnabled = true;
+            this.comboDeparture.Location = new System.Drawing.Point(158, 82);
+            this.comboDeparture.Name = "comboDeparture";
+            this.comboDeparture.Size = new System.Drawing.Size(146, 23);
+            this.comboDeparture.TabIndex = 5;
             // 
             // btnSearch
             // 
@@ -139,7 +140,6 @@
             this.label5.Size = new System.Drawing.Size(77, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Date of Travel";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -175,7 +175,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dataSearchGridView);
             this.panel3.Location = new System.Drawing.Point(185, 276);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(704, 179);
@@ -201,13 +201,14 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "AVAILABLE TRAINS";
             // 
-            // dataGridView1
+            // dataSearchGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 58);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(666, 107);
-            this.dataGridView1.TabIndex = 0;
+            this.dataSearchGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataSearchGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSearchGridView.Location = new System.Drawing.Point(22, 58);
+            this.dataSearchGridView.Name = "dataSearchGridView";
+            this.dataSearchGridView.Size = new System.Drawing.Size(666, 107);
+            this.dataSearchGridView.TabIndex = 0;
             // 
             // panel1
             // 
@@ -249,25 +250,25 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "TERMINAL";
             // 
-            // button1
+            // btnCustomer
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(42, 286);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 30);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "CUSTOMERS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCustomer.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.Location = new System.Drawing.Point(42, 286);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(94, 30);
+            this.btnCustomer.TabIndex = 7;
+            this.btnCustomer.Text = "CUSTOMERS";
+            this.btnCustomer.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnLogOut
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(91, 388);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 27);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "LOG OUT";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(91, 388);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(88, 27);
+            this.btnLogOut.TabIndex = 8;
+            this.btnLogOut.Text = "LOG OUT";
+            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // StaffDashboard
             // 
@@ -275,8 +276,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(901, 467);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnCustomer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel5);
@@ -292,7 +293,7 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSearchGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -306,22 +307,22 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataSearchGridView;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCustomer;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.ComboBox comboArrival;
+        private System.Windows.Forms.ComboBox comboDeparture;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

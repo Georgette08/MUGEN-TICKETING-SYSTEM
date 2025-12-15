@@ -36,39 +36,38 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnAccounts = new System.Windows.Forms.Button();
+            this.btnFares = new System.Windows.Forms.Button();
+            this.btnTrains = new System.Windows.Forms.Button();
+            this.btnStations = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.comboArrival = new System.Windows.Forms.ComboBox();
+            this.comboDeparture = new System.Windows.Forms.ComboBox();
+            this.comboTrainID = new System.Windows.Forms.ComboBox();
+            this.dtpArrivalTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpDepartureTime = new System.Windows.Forms.DateTimePicker();
+            this.txtScheduleID = new System.Windows.Forms.TextBox();
+            this.dtpArrival = new System.Windows.Forms.Label();
+            this.dtpDeparture = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataScheduleGridView = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataScheduleGridView)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,12 +104,12 @@
             // 
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnLogOut);
+            this.panel2.Controls.Add(this.btnDashboard);
+            this.panel2.Controls.Add(this.btnAccounts);
+            this.panel2.Controls.Add(this.btnFares);
+            this.panel2.Controls.Add(this.btnTrains);
+            this.panel2.Controls.Add(this.btnStations);
             this.panel2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(2, 34);
             this.panel2.Name = "panel2";
@@ -137,167 +136,170 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "MUGEN TICKETING";
             // 
-            // button6
+            // btnLogOut
             // 
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(93, 354);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "LOG OUT";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(93, 354);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 5;
+            this.btnLogOut.Text = "LOG OUT";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // button5
+            // btnDashboard
             // 
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(26, 265);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 29);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "DASHBORD";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnDashboard.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Location = new System.Drawing.Point(26, 265);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(145, 29);
+            this.btnDashboard.TabIndex = 4;
+            this.btnDashboard.Text = "DASHBORD";
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // button4
+            // btnAccounts
             // 
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(26, 229);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(145, 29);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "USER ACCOUNTS";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAccounts.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccounts.Location = new System.Drawing.Point(26, 229);
+            this.btnAccounts.Name = "btnAccounts";
+            this.btnAccounts.Size = new System.Drawing.Size(145, 29);
+            this.btnAccounts.TabIndex = 3;
+            this.btnAccounts.Text = "USER ACCOUNTS";
+            this.btnAccounts.UseVisualStyleBackColor = true;
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
-            // button3
+            // btnFares
             // 
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(26, 194);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 29);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "MANAGE FARES";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnFares.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFares.Location = new System.Drawing.Point(26, 194);
+            this.btnFares.Name = "btnFares";
+            this.btnFares.Size = new System.Drawing.Size(145, 29);
+            this.btnFares.TabIndex = 2;
+            this.btnFares.Text = "MANAGE FARES";
+            this.btnFares.UseVisualStyleBackColor = true;
+            this.btnFares.Click += new System.EventHandler(this.btnFares_Click);
             // 
-            // button2
+            // btnTrains
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(26, 159);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "MANAGE TRAINS";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTrains.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrains.Location = new System.Drawing.Point(26, 159);
+            this.btnTrains.Name = "btnTrains";
+            this.btnTrains.Size = new System.Drawing.Size(145, 29);
+            this.btnTrains.TabIndex = 1;
+            this.btnTrains.Text = "MANAGE TRAINS";
+            this.btnTrains.UseVisualStyleBackColor = true;
+            this.btnTrains.Click += new System.EventHandler(this.btnTrains_Click);
             // 
-            // button1
+            // btnStations
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(26, 124);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "MANAGE STATIONS";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStations.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStations.Location = new System.Drawing.Point(26, 124);
+            this.btnStations.Name = "btnStations";
+            this.btnStations.Size = new System.Drawing.Size(145, 29);
+            this.btnStations.TabIndex = 0;
+            this.btnStations.Text = "MANAGE STATIONS";
+            this.btnStations.UseVisualStyleBackColor = true;
+            this.btnStations.Click += new System.EventHandler(this.btnStations_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel3.Controls.Add(this.dateTimePicker2);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.comboBox3);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.comboArrival);
+            this.panel3.Controls.Add(this.comboDeparture);
+            this.panel3.Controls.Add(this.comboTrainID);
+            this.panel3.Controls.Add(this.dtpArrivalTime);
+            this.panel3.Controls.Add(this.dtpDepartureTime);
+            this.panel3.Controls.Add(this.txtScheduleID);
+            this.panel3.Controls.Add(this.dtpArrival);
+            this.panel3.Controls.Add(this.dtpDeparture);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.button10);
-            this.panel3.Controls.Add(this.button9);
-            this.panel3.Controls.Add(this.button8);
-            this.panel3.Controls.Add(this.button7);
+            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Controls.Add(this.btnDelete);
+            this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Location = new System.Drawing.Point(202, 34);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(687, 247);
+            this.panel3.Size = new System.Drawing.Size(687, 234);
             this.panel3.TabIndex = 2;
             // 
-            // dateTimePicker2
+            // comboArrival
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(224, 194);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(146, 20);
-            this.dateTimePicker2.TabIndex = 2;
+            this.comboArrival.FormattingEnabled = true;
+            this.comboArrival.Location = new System.Drawing.Point(217, 132);
+            this.comboArrival.Name = "comboArrival";
+            this.comboArrival.Size = new System.Drawing.Size(146, 21);
+            this.comboArrival.TabIndex = 32;
             // 
-            // dateTimePicker1
+            // comboDeparture
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(224, 164);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(146, 20);
-            this.dateTimePicker1.TabIndex = 20;
+            this.comboDeparture.FormattingEnabled = true;
+            this.comboDeparture.Location = new System.Drawing.Point(217, 105);
+            this.comboDeparture.Name = "comboDeparture";
+            this.comboDeparture.Size = new System.Drawing.Size(146, 21);
+            this.comboDeparture.TabIndex = 31;
+            this.comboDeparture.SelectedIndexChanged += new System.EventHandler(this.comboDeparture_SelectedIndexChanged);
             // 
-            // comboBox3
+            // comboTrainID
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(224, 132);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(146, 23);
-            this.comboBox3.TabIndex = 19;
+            this.comboTrainID.FormattingEnabled = true;
+            this.comboTrainID.Location = new System.Drawing.Point(217, 78);
+            this.comboTrainID.Name = "comboTrainID";
+            this.comboTrainID.Size = new System.Drawing.Size(146, 21);
+            this.comboTrainID.TabIndex = 30;
+            this.comboTrainID.SelectedIndexChanged += new System.EventHandler(this.comboTrainID_SelectedIndexChanged);
             // 
-            // comboBox2
+            // dtpArrivalTime
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(224, 101);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(146, 23);
-            this.comboBox2.TabIndex = 18;
+            this.dtpArrivalTime.Location = new System.Drawing.Point(217, 196);
+            this.dtpArrivalTime.Name = "dtpArrivalTime";
+            this.dtpArrivalTime.Size = new System.Drawing.Size(146, 20);
+            this.dtpArrivalTime.TabIndex = 2;
             // 
-            // comboBox1
+            // dtpDepartureTime
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(224, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 23);
-            this.comboBox1.TabIndex = 17;
+            this.dtpDepartureTime.Location = new System.Drawing.Point(217, 168);
+            this.dtpDepartureTime.Name = "dtpDepartureTime";
+            this.dtpDepartureTime.Size = new System.Drawing.Size(146, 20);
+            this.dtpDepartureTime.TabIndex = 20;
             // 
-            // textBox1
+            // txtScheduleID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(224, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 21);
-            this.textBox1.TabIndex = 16;
+            this.txtScheduleID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScheduleID.Location = new System.Drawing.Point(217, 51);
+            this.txtScheduleID.Name = "txtScheduleID";
+            this.txtScheduleID.Size = new System.Drawing.Size(146, 21);
+            this.txtScheduleID.TabIndex = 16;
             // 
-            // label11
+            // dtpArrival
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(73, 202);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 15);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Arrival Time";
+            this.dtpArrival.AutoSize = true;
+            this.dtpArrival.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpArrival.Location = new System.Drawing.Point(92, 194);
+            this.dtpArrival.Name = "dtpArrival";
+            this.dtpArrival.Size = new System.Drawing.Size(69, 15);
+            this.dtpArrival.TabIndex = 15;
+            this.dtpArrival.Text = "Arrival Time";
             // 
-            // label10
+            // dtpDeparture
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(73, 167);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 15);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Departure Time";
+            this.dtpDeparture.AutoSize = true;
+            this.dtpDeparture.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDeparture.Location = new System.Drawing.Point(92, 166);
+            this.dtpDeparture.Name = "dtpDeparture";
+            this.dtpDeparture.Size = new System.Drawing.Size(84, 15);
+            this.dtpDeparture.TabIndex = 14;
+            this.dtpDeparture.Text = "Departure Time";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(73, 132);
+            this.label9.Location = new System.Drawing.Point(92, 138);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 15);
             this.label9.TabIndex = 13;
@@ -307,7 +309,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(73, 101);
+            this.label8.Location = new System.Drawing.Point(92, 114);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 15);
             this.label8.TabIndex = 12;
@@ -317,7 +319,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(73, 72);
+            this.label7.Location = new System.Drawing.Point(92, 81);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 15);
             this.label7.TabIndex = 11;
@@ -327,7 +329,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(73, 44);
+            this.label6.Location = new System.Drawing.Point(92, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 15);
             this.label6.TabIndex = 10;
@@ -337,79 +339,72 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(63, 13);
+            this.label4.Location = new System.Drawing.Point(28, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "Manage Schedule";
             // 
-            // button10
+            // btnUpdate
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button10.Location = new System.Drawing.Point(496, 167);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(88, 27);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "CLEAR";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdate.Location = new System.Drawing.Point(452, 166);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(88, 27);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // button9
+            // btnDelete
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(496, 132);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(88, 27);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "UPDATE";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(452, 124);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(88, 27);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button8
+            // btnAdd
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button8.Location = new System.Drawing.Point(496, 97);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(88, 27);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "DELETE";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(496, 58);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 27);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "ADD";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAdd.Location = new System.Drawing.Point(452, 78);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(88, 27);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "ADD";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Controls.Add(this.dataScheduleGridView);
             this.panel4.Controls.Add(this.panel6);
-            this.panel4.Location = new System.Drawing.Point(202, 287);
+            this.panel4.Location = new System.Drawing.Point(202, 274);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(687, 174);
+            this.panel4.Size = new System.Drawing.Size(687, 187);
             this.panel4.TabIndex = 2;
             // 
-            // dataGridView1
+            // dataScheduleGridView
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(650, 101);
-            this.dataGridView1.TabIndex = 3;
+            this.dataScheduleGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataScheduleGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataScheduleGridView.Location = new System.Drawing.Point(19, 59);
+            this.dataScheduleGridView.Name = "dataScheduleGridView";
+            this.dataScheduleGridView.Size = new System.Drawing.Size(650, 101);
+            this.dataScheduleGridView.TabIndex = 3;
+            this.dataScheduleGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataScheduleGridView_CellContentClick);
+            this.dataScheduleGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataScheduleGridView_CellContentClick);
             // 
             // panel6
             // 
@@ -452,7 +447,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataScheduleGridView)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
@@ -467,33 +462,32 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnDashboard;
+        private System.Windows.Forms.Button btnAccounts;
+        private System.Windows.Forms.Button btnFares;
+        private System.Windows.Forms.Button btnTrains;
+        private System.Windows.Forms.Button btnStations;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label dtpArrival;
+        private System.Windows.Forms.Label dtpDeparture;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dtpDepartureTime;
+        private System.Windows.Forms.TextBox txtScheduleID;
+        private System.Windows.Forms.DateTimePicker dtpArrivalTime;
+        private System.Windows.Forms.DataGridView dataScheduleGridView;
+        private System.Windows.Forms.ComboBox comboTrainID;
+        private System.Windows.Forms.ComboBox comboArrival;
+        private System.Windows.Forms.ComboBox comboDeparture;
     }
 }

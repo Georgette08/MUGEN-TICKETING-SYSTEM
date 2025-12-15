@@ -32,19 +32,17 @@ namespace MUGEN_SYSTEM
             comboStationName.Items.Clear();       
 
             //  Predefined station names 
-            comboStationName.Items.Add("Tokyo Station");
-            comboStationName.Items.Add("Kyoto Station");
-            comboStationName.Items.Add("Shinagawa Station");
-            comboStationName.Items.Add("Hakata Station");
-            comboStationName.Items.Add("Shin-Osaka Station");
-            comboStationName.Items.Add("Nagoya Station");
+            comboStationName.Items.Add("Tokaido Shinkansen");
+            comboStationName.Items.Add("Sanyo Shinkansen");
+            comboStationName.Items.Add("Tohoku Shinkansen");
+            comboStationName.Items.Add("Kyusu Shinkansen");
+            comboStationName.Items.Add("Hokkaido Shinkansen");
 
-            LineServed.Add("Tokaido Shinkansen");
-            LineServed.Add("Sanyo Shinkansen");
-            LineServed.Add("Kyushu Shinkansen");
-            LineServed.Add("Tohoku Shinkansen");
-            LineServed.Add("Hokkaido Shinkansen");
-            LineServed.Add("Joetsu Shinkansen");
+            LineServed.Add("Tokaido Line");
+            LineServed.Add("Sanyo Line");
+            LineServed.Add("Tohoku Line");
+            LineServed.Add("Kyusu Line");
+            LineServed.Add("Hokkaido Line");
 
             City.Add("Chiyoda Ward, Tokyo City");
             City.Add(" Kyoto City");
