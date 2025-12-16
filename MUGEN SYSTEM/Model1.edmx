@@ -138,6 +138,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Bookings_UserAccount1">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Fare_Stations">
           <End Role="Stations" Type="Self.Stations" Multiplicity="0..1" />
           <End Role="Fare" Type="Self.Fare" Multiplicity="*" />
@@ -220,6 +232,10 @@
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>
           <AssociationSet Name="FK_Bookings_UserAccount" Association="Self.FK_Bookings_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookings_UserAccount1" Association="Self.FK_Bookings_UserAccount1">
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="Bookings" EntitySet="Bookings" />
           </AssociationSet>

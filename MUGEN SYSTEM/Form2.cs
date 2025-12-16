@@ -42,6 +42,7 @@ namespace MUGEN_SYSTEM
                         .ToList();
                 }
 
+                // Bind the data sources
                 comboDeparture.DataSource = AllStationsList.ToList();
                 comboDeparture.DisplayMember = "Name";
                 comboDeparture.ValueMember = "Id";
@@ -91,16 +92,15 @@ namespace MUGEN_SYSTEM
                         )
                         .Select(s => new
                         {
-                            // IDs
+                            // CRITICAL IDs
                             ScheduleID = s.ScheduleID,
                             DepartureStationID = s.DepartureStationID,
                             ArrivalStationID = s.ArrivalStationID,
 
-                            // Display details
-                            // FIX: Using the plural forms for navigation properties to fix CS1061
-                            TrainName = s.Trains.TrainName,
-                            DepartureStation = s.Stations.StationName,
-                            ArrivalStation = s.Stations1.StationName,
+                            // Display details (Using the most common Entity Framework Navigation Property names)
+                            TrainName = s.Trains.TrainName,           // Corrected Navigation
+                            DepartureStation = s.Stations.StationName, // Corrected Navigation
+                            ArrivalStation = s.Stations1.StationName,  // Corrected Navigation
                             DepartureTime = s.DepartureTime,
                             ArrivalTime = s.ArrivalTime
                         })
@@ -109,7 +109,7 @@ namespace MUGEN_SYSTEM
 
                     dataSearchGridView.DataSource = availableTrips;
 
-                    // Hide ID columns
+                    // Hide ID columns after binding
                     if (dataSearchGridView.Columns["ScheduleID"] != null)
                         dataSearchGridView.Columns["ScheduleID"].Visible = false;
                     if (dataSearchGridView.Columns["DepartureStationID"] != null)
@@ -140,33 +140,37 @@ namespace MUGEN_SYSTEM
 
             try
             {
-                // Retrieve data
-                int scheduleId = (int)selectedRow.Cells["ScheduleID"].Value;
-                int depStationId = (int)selectedRow.Cells["DepartureStationID"].Value;
-                int arrStationId = (int)selectedRow.Cells["ArrivalStationID"].Value;
-                string trainName = selectedRow.Cells["TrainName"].Value.ToString();
-                string departureStationName = selectedRow.Cells["DepartureStation"].Value.ToString();
-                string arrivalStationName = selectedRow.Cells["ArrivalStation"].Value.ToString();
-                DateTime departureTime = (DateTime)selectedRow.Cells["DepartureTime"].Value;
+                // Safe Data Retrieval using Convert for robustness
+                int scheduleId = Convert.ToInt32(selectedRow.Cells["ScheduleID"].Value);
+                int depStationId = Convert.ToInt32(selectedRow.Cells["DepartureStationID"].Value);
+                int arrStationId = Convert.ToInt32(selectedRow.Cells["ArrivalStationID"].Value);
+
+                string trainName = selectedRow.Cells["TrainName"].Value?.ToString() ?? "N/A";
+                string departureStationName = selectedRow.Cells["DepartureStation"].Value?.ToString() ?? "N/A";
+                string arrivalStationName = selectedRow.Cells["ArrivalStation"].Value?.ToString() ?? "N/A";
+
+                DateTime departureTime = Convert.ToDateTime(selectedRow.Cells["DepartureTime"].Value);
+
                 int currentAgentId = SessionManager.CurrentAgentID;
 
                 // Instantiate the PassengerForm with 8 Arguments
-                PassengerForm passengerForm = new PassengerForm(
+                PassengerForm passengerForm = new PassengerForm( userLogIn,
                     scheduleId, depStationId, arrStationId, trainName,
                     departureStationName, arrivalStationName, departureTime, currentAgentId
                 );
 
-                // Show the form modally. Execution stops here.
                 passengerForm.ShowDialog();
 
-                // FIX: Execution resumes here. Reload the search results to show the updated seat availability.
+                // Reload the grid after the Passenger Form is closed/booking is done
                 btnSearch_Click(sender, e);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error confirming selection: {ex.Message}.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error confirming selection and launching form. Detail: {ex.Message}", "Form Launch Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // ... (Sh
         private void ShowandManageForm(Form newform)
         {
             this.Hide();
@@ -198,6 +202,12 @@ namespace MUGEN_SYSTEM
         private void dataSearchGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+       
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            CustomersDashboard customerDashboard = new CustomersDashboard(userLogIn);
+            ShowandManageForm(customerDashboard);
         }
     }
     public class ScheduleComboItem

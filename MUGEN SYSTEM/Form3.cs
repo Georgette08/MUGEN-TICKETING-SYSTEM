@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
-
+using MUGENTICKETSYSTEM;
 
 namespace MUGEN_SYSTEM
 {
     public partial class PassengerForm : Form
     {
+        private readonly UserAccount userlogIn;
 
         private int _scheduleId;
         private int _depStationId;
@@ -25,10 +26,11 @@ namespace MUGEN_SYSTEM
         private int _agentId;
 
         private const int MAX_SEAT_CAPACITY = 100;
-        public PassengerForm(int scheduleId, int depStationId, int arrStationId, string trainName, string depName,
+        public PassengerForm(UserAccount userlogIn,int scheduleId, int depStationId, int arrStationId, string trainName, string depName,
             string arrName, DateTime departureTime, int agentId)
         {
             InitializeComponent();
+            this.userlogIn = userlogIn;
             _scheduleId = scheduleId;
             _depStationId = depStationId;
             _arrStationId = arrStationId;
@@ -187,15 +189,23 @@ namespace MUGEN_SYSTEM
             {
                 // 1. DATA VALIDATION AND RETRIEVAL
 
-                // FIX 7: Check your control names. Assuming 'txtContact' is txtContactNo, etc.
                 string firstName = txtFirstName.Text.Trim();
                 string lastName = txtLastName.Text.Trim();
-                string contactNumber = txtContact.Text.Trim(); // ASSUMED: txtContact is txtContactNo
-                string email = txtEmail.Text.Trim();     // ASSUMED: txtEmail is txtEmailAddress
+                string contactNumber = txtContact.Text.Trim(); // Use your actual control name
+                string email = txtEmail.Text.Trim();       // Use your actual control name
 
-                // b. Booking Details (Fetched from hidden/calculated fields)
-                // ... (Validation for fareId, seatNumber, totalFarePaid are fine) ...
-                if (!int.TryParse(txtFareID.Text, out int fareId)) { /* ... */ return; }
+                if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+                {
+                    MessageBox.Show("Please enter the passenger's full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Retrieve Booking Details
+                if (!int.TryParse(txtFareID.Text, out int fareId))
+                {
+                    MessageBox.Show("Fare Class must be selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 string seatNumber;
                 if (comboAvailableSeats.SelectedItem != null)
@@ -208,12 +218,16 @@ namespace MUGEN_SYSTEM
                     return;
                 }
 
-                if (!decimal.TryParse(txtTotalFare.Text.Replace("₱", "").Replace("$", ""), out decimal totalFarePaid)) { /* ... */ return; }
-                if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName)) { /* ... */ return; }
+                if (!decimal.TryParse(txtTotalFare.Text.Replace("₱", "").Replace("$", ""), out decimal totalFarePaid))
+                {
+                    MessageBox.Show("Total Fare is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
 
                 // 2. PASSENGER RECORD INSERT/LOOKUP
                 int passengerId = 0;
+
                 var existingPassenger = db.Passengers.FirstOrDefault(p => p.ContactNumber == contactNumber || p.Email == email);
 
                 if (existingPassenger != null)
@@ -222,7 +236,7 @@ namespace MUGEN_SYSTEM
                 }
                 else
                 {
-                    // Insert new passenger record
+                    // Use the correct singular Entity type name: Passenger
                     var newPassenger = new Passengers
                     {
                         FirstName = firstName,
@@ -232,14 +246,17 @@ namespace MUGEN_SYSTEM
                     };
 
                     db.Passengers.Add(newPassenger);
-                    db.SaveChanges(); // Save to get the new PassengerID
+                    db.SaveChanges(); // CRITICAL: Save to get the new PassengerID
+
                     passengerId = newPassenger.PassengerID;
                     txtPassengerID.Text = passengerId.ToString();
                 }
 
+
                 // 3. BOOKING RECORD INSERT
                 try
                 {
+                    // Use the correct singular Entity type name: Booking
                     var newBooking = new Bookings
                     {
                         ScheduleID = _scheduleId,
@@ -248,27 +265,138 @@ namespace MUGEN_SYSTEM
                         SeatNumber = seatNumber,
                         TotalFarePaid = totalFarePaid,
                         BookingDate = DateTime.Now,
-                        AgentID = _agentId
+                        AgentID = _agentId                // This value is now correct (not 0)
                     };
 
                     db.Bookings.Add(newBooking);
                     db.SaveChanges();
 
+                    // Success: Update UI and close form
                     txtBookingID.Text = newBooking.BookingID.ToString();
+
                     MessageBox.Show($"Booking successful! Booking ID: {newBooking.BookingID}", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     btnConfirm.Enabled = false;
+                    this.Close(); // Return control to the StaffDashboard
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Booking failed. Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Booking failed. Please check data constraints. Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        public class FareComboItem
+        private void btnCustomers_Click(object sender, EventArgs e)
         {
-            public int FareId { get; set; }
-            public string ClassName { get; set; }
-            public override string ToString() => ClassName;
+            this.Hide();
+
+            CustomersDashboard customersDashboard = new CustomersDashboard(userlogIn);
+
+           
+            customersDashboard.ShowDialog();
+
+           
+            this.Show();
+        }
+  
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtPassengerID.Text, out int passengerId) || passengerId == 0)
+            {
+                MessageBox.Show("Cannot update. No existing Passenger ID is loaded.", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Retrieve the new data from the form fields
+            string firstName = txtFirstName.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
+            string contactNumber = txtContact.Text.Trim();
+            string email = txtEmail.Text.Trim();
+
+            // Basic Validation
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            {
+                MessageBox.Show("First Name and Last Name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (var db = new MugenSystemDBEntities())
+                {
+                    // 1. Find the existing Passenger entity
+                    // FIX: Using db.Passengers (assuming plural collection name) and singular type Passenger
+                    var passengerToUpdate = db.Passengers.FirstOrDefault(p => p.PassengerID == passengerId);
+
+                    if (passengerToUpdate != null)
+                    {
+                        // 2. Apply the updates
+                        passengerToUpdate.FirstName = firstName;
+                        passengerToUpdate.LastName = lastName;
+                        passengerToUpdate.ContactNumber = contactNumber;
+                        passengerToUpdate.Email = email;
+
+                        // 3. Save the changes to the database
+                        db.SaveChanges();
+
+                        MessageBox.Show($"Passenger ID {passengerId} details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Passenger ID {passengerId} not found in the database.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while updating passenger data: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PassengerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+        "Are you sure you want to log out? This will close the application and return to the login screen.",
+        "Confirm Logout",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question
+    );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                // 1. Instantiate and show the login form
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+
+                // 2. CRITICAL: Close ALL related forms (including hidden parents like StaffDashboard)
+                // We iterate through all open forms and close them except the new LoginForm.
+                // Use a list to avoid modifying the collection while iterating
+                List<Form> formsToClose = new List<Form>();
+
+                foreach (Form form in Application.OpenForms)
+                {
+                    // Do not close the new LoginForm
+                    if (form != loginForm)
+                    {
+                        formsToClose.Add(form);
+                    }
+                }
+
+                // 3. Close the identified forms (PassengerForm, StaffDashboard, etc.)
+                foreach (Form form in formsToClose)
+                {
+                    form.Close();
+                }
+
+                // The PassengerForm will close itself here via the formsToClose loop, 
+                // but adding this.Close() one last time is harmless if it hasn't closed yet.
+                this.Close();
+            }
         }
     }
 }
