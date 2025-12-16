@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MUGEN_SYSTEM.SchedulesDashboard;
+using MUGENTICKETSYSTEM;
 
 namespace MUGEN_SYSTEM
 {
@@ -416,6 +417,51 @@ namespace MUGEN_SYSTEM
                 // 5. Load ClassService (Assuming you add this column to your LoadFareDataGrid select)
                 // You will need a column named 'ClassService' or similar in your DGV
                 // comboClass.SelectedItem = row.Cells["ClassService"].Value.ToString(); 
+            }
+        }
+        private void ShowDashboard(Form dashboardForm)
+        {
+            dashboardForm.Show();
+            this.Hide();
+        }
+
+        private void btnStations_Click(object sender, EventArgs e)
+        {
+            StationsDashboard stationsDashboard = new StationsDashboard(userLogIn);
+            ShowDashboard(stationsDashboard);
+        }
+
+        private void btnTrains_Click(object sender, EventArgs e)
+        {
+            TrainsDashboard trainsDashboard = new TrainsDashboard(userLogIn);
+            ShowDashboard(trainsDashboard);
+        }
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            SchedulesDashboard schedulesDashboard = new SchedulesDashboard(userLogIn);
+            ShowDashboard(schedulesDashboard);
+        }
+
+        private void btnAccounts_Click(object sender, EventArgs e)
+        {
+            UserDashboard userDashboard = new UserDashboard(userLogIn);
+            ShowDashboard(userDashboard);
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            AdminDashboard adminDashboard = new AdminDashboard(userLogIn);
+            ShowDashboard(adminDashboard);
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+                this.Hide();
             }
         }
     }

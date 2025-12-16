@@ -34,47 +34,57 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtStaff = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.txtArrival = new System.Windows.Forms.TextBox();
+            this.txtDeparture = new System.Windows.Forms.TextBox();
+            this.txtTrainName = new System.Windows.Forms.TextBox();
+            this.txtFareID = new System.Windows.Forms.TextBox();
+            this.txtScheduleID = new System.Windows.Forms.TextBox();
+            this.txtBookingID = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnCustomers = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPassengerID = new System.Windows.Forms.TextBox();
+            this.txtContact = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtTotalFare = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtPassID = new System.Windows.Forms.TextBox();
+            this.txtRoute = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboClass = new System.Windows.Forms.ComboBox();
+            this.comboAvailableSeats = new System.Windows.Forms.ComboBox();
+            this.txtSeats = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -126,37 +136,143 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel4.Controls.Add(this.comboBox6);
+            this.panel4.Controls.Add(this.comboClass);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.txtRoute);
+            this.panel4.Controls.Add(this.label25);
+            this.panel4.Controls.Add(this.txtStaff);
+            this.panel4.Controls.Add(this.txtDate);
+            this.panel4.Controls.Add(this.txtArrival);
+            this.panel4.Controls.Add(this.txtDeparture);
+            this.panel4.Controls.Add(this.txtTrainName);
+            this.panel4.Controls.Add(this.txtFareID);
+            this.panel4.Controls.Add(this.txtPassID);
+            this.panel4.Controls.Add(this.txtScheduleID);
+            this.panel4.Controls.Add(this.txtBookingID);
+            this.panel4.Controls.Add(this.label24);
+            this.panel4.Controls.Add(this.label23);
+            this.panel4.Controls.Add(this.label22);
+            this.panel4.Controls.Add(this.label21);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.dateTimePicker1);
-            this.panel4.Controls.Add(this.comboBox5);
-            this.panel4.Controls.Add(this.comboBox4);
-            this.panel4.Controls.Add(this.comboBox3);
-            this.panel4.Controls.Add(this.comboBox2);
-            this.panel4.Location = new System.Drawing.Point(618, 215);
+            this.panel4.Location = new System.Drawing.Point(618, 153);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(271, 240);
+            this.panel4.Size = new System.Drawing.Size(271, 310);
             this.panel4.TabIndex = 9;
             // 
-            // comboBox6
+            // label25
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(97, 194);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(154, 21);
-            this.comboBox6.TabIndex = 21;
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(20, 286);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(30, 15);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "Staff";
+            // 
+            // txtStaff
+            // 
+            this.txtStaff.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStaff.Location = new System.Drawing.Point(130, 283);
+            this.txtStaff.Name = "txtStaff";
+            this.txtStaff.Size = new System.Drawing.Size(121, 21);
+            this.txtStaff.TabIndex = 35;
+            // 
+            // txtDate
+            // 
+            this.txtDate.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDate.Location = new System.Drawing.Point(130, 229);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(121, 21);
+            this.txtDate.TabIndex = 33;
+            // 
+            // txtArrival
+            // 
+            this.txtArrival.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtArrival.Location = new System.Drawing.Point(130, 202);
+            this.txtArrival.Name = "txtArrival";
+            this.txtArrival.Size = new System.Drawing.Size(121, 21);
+            this.txtArrival.TabIndex = 32;
+            // 
+            // txtDeparture
+            // 
+            this.txtDeparture.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeparture.Location = new System.Drawing.Point(130, 175);
+            this.txtDeparture.Name = "txtDeparture";
+            this.txtDeparture.Size = new System.Drawing.Size(121, 21);
+            this.txtDeparture.TabIndex = 31;
+            // 
+            // txtTrainName
+            // 
+            this.txtTrainName.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrainName.Location = new System.Drawing.Point(130, 118);
+            this.txtTrainName.Name = "txtTrainName";
+            this.txtTrainName.Size = new System.Drawing.Size(121, 21);
+            this.txtTrainName.TabIndex = 29;
+            // 
+            // txtFareID
+            // 
+            this.txtFareID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFareID.Location = new System.Drawing.Point(130, 91);
+            this.txtFareID.Name = "txtFareID";
+            this.txtFareID.Size = new System.Drawing.Size(121, 21);
+            this.txtFareID.TabIndex = 28;
+            // 
+            // txtScheduleID
+            // 
+            this.txtScheduleID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScheduleID.Location = new System.Drawing.Point(130, 37);
+            this.txtScheduleID.Name = "txtScheduleID";
+            this.txtScheduleID.Size = new System.Drawing.Size(121, 21);
+            this.txtScheduleID.TabIndex = 26;
+            // 
+            // txtBookingID
+            // 
+            this.txtBookingID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBookingID.Location = new System.Drawing.Point(130, 10);
+            this.txtBookingID.Name = "txtBookingID";
+            this.txtBookingID.Size = new System.Drawing.Size(121, 21);
+            this.txtBookingID.TabIndex = 21;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(17, 94);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(44, 15);
+            this.label24.TabIndex = 25;
+            this.label24.Text = "Fare ID";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(17, 40);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 15);
+            this.label22.TabIndex = 23;
+            this.label22.Text = "Schedule ID";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(17, 16);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(63, 15);
+            this.label21.TabIndex = 22;
+            this.label21.Text = "Booking ID";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(17, 196);
+            this.label11.Location = new System.Drawing.Point(20, 259);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 15);
             this.label11.TabIndex = 20;
@@ -175,27 +291,17 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(17, 156);
+            this.label9.Location = new System.Drawing.Point(20, 232);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 15);
             this.label9.TabIndex = 18;
             this.label9.Text = "Date";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 15);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Route";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 116);
+            this.label7.Location = new System.Drawing.Point(17, 205);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 15);
             this.label7.TabIndex = 16;
@@ -205,7 +311,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 81);
+            this.label6.Location = new System.Drawing.Point(17, 178);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 15);
             this.label6.TabIndex = 15;
@@ -215,50 +321,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 14);
+            this.label5.Location = new System.Drawing.Point(17, 121);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 15);
             this.label5.TabIndex = 14;
             this.label5.Text = "Train";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(97, 156);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(154, 20);
-            this.dateTimePicker1.TabIndex = 5;
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(97, 116);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(154, 21);
-            this.comboBox5.TabIndex = 4;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(97, 75);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(154, 21);
-            this.comboBox4.TabIndex = 3;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(97, 45);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(154, 21);
-            this.comboBox3.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(97, 14);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(154, 21);
-            this.comboBox2.TabIndex = 1;
             // 
             // label4
             // 
@@ -270,39 +337,23 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "AVAILABLE SEATS";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(130, 35);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel5.Controls.Add(this.textBox6);
+            this.panel5.Controls.Add(this.txtSeats);
+            this.panel5.Controls.Add(this.comboAvailableSeats);
             this.panel5.Controls.Add(this.label15);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Controls.Add(this.comboBox1);
             this.panel5.Location = new System.Drawing.Point(618, 51);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(271, 158);
+            this.panel5.Size = new System.Drawing.Size(271, 96);
             this.panel5.TabIndex = 10;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(130, 96);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 21);
-            this.textBox6.TabIndex = 20;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(9, 96);
+            this.label15.Location = new System.Drawing.Point(9, 62);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 16);
             this.label15.TabIndex = 14;
@@ -327,15 +378,15 @@
             this.btnCustomers.Text = "CUSTOMERS";
             this.btnCustomers.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnLogOut
             // 
-            this.button3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(84, 399);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 27);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "LOG OUT";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnLogOut.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(84, 399);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(88, 27);
+            this.btnLogOut.TabIndex = 13;
+            this.btnLogOut.Text = "LOG OUT";
+            this.btnLogOut.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -359,42 +410,43 @@
             this.label14.TabIndex = 15;
             this.label14.Text = "TERMINAL";
             // 
-            // button7
+            // btnCancel
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button7.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(289, 335);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(88, 27);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "CANCEL";
-            this.button7.UseVisualStyleBackColor = false;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(289, 335);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(88, 27);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // btnUpdate
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button5.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(166, 335);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(88, 27);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "UPDATE";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnUpdate.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(166, 335);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(88, 27);
+            this.btnUpdate.TabIndex = 10;
+            this.btnUpdate.Text = "UPDATE";
+            this.btnUpdate.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnConfirm
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(46, 335);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(88, 27);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "CONFIRM";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.btnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnConfirm.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.Location = new System.Drawing.Point(46, 335);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(88, 27);
+            this.btnConfirm.TabIndex = 9;
+            this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // panel8
             // 
@@ -426,29 +478,29 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "Total Fare";
             // 
-            // textBox1
+            // txtPassengerID
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(166, 78);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 21);
-            this.textBox1.TabIndex = 3;
+            this.txtPassengerID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassengerID.Location = new System.Drawing.Point(166, 78);
+            this.txtPassengerID.Name = "txtPassengerID";
+            this.txtPassengerID.Size = new System.Drawing.Size(161, 21);
+            this.txtPassengerID.TabIndex = 3;
             // 
-            // textBox2
+            // txtContact
             // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(166, 242);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(161, 21);
-            this.textBox2.TabIndex = 4;
+            this.txtContact.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.Location = new System.Drawing.Point(166, 242);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(161, 21);
+            this.txtContact.TabIndex = 4;
             // 
-            // textBox3
+            // txtFirstName
             // 
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(166, 118);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(161, 21);
-            this.textBox3.TabIndex = 13;
+            this.txtFirstName.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Location = new System.Drawing.Point(166, 118);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(161, 21);
+            this.txtFirstName.TabIndex = 13;
             // 
             // label17
             // 
@@ -480,13 +532,13 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Email Address";
             // 
-            // textBox4
+            // txtLastName
             // 
-            this.textBox4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(166, 160);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(161, 21);
-            this.textBox4.TabIndex = 17;
+            this.txtLastName.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Location = new System.Drawing.Point(166, 160);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(161, 21);
+            this.txtLastName.TabIndex = 17;
             // 
             // label19
             // 
@@ -498,45 +550,45 @@
             this.label19.TabIndex = 18;
             this.label19.Text = "Contact NO.";
             // 
-            // textBox5
+            // txtEmail
             // 
-            this.textBox5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(166, 203);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(161, 21);
-            this.textBox5.TabIndex = 19;
+            this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(166, 203);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(161, 21);
+            this.txtEmail.TabIndex = 19;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.txtTotalFare);
             this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.textBox5);
+            this.panel3.Controls.Add(this.txtEmail);
             this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.textBox4);
+            this.panel3.Controls.Add(this.txtLastName);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtFirstName);
+            this.panel3.Controls.Add(this.txtContact);
+            this.panel3.Controls.Add(this.txtPassengerID);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.panel8);
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button7);
+            this.panel3.Controls.Add(this.btnConfirm);
+            this.panel3.Controls.Add(this.btnUpdate);
+            this.panel3.Controls.Add(this.btnCancel);
             this.panel3.Location = new System.Drawing.Point(189, 51);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(423, 404);
             this.panel3.TabIndex = 8;
             // 
-            // textBox7
+            // txtTotalFare
             // 
-            this.textBox7.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(166, 283);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(161, 21);
-            this.textBox7.TabIndex = 21;
+            this.txtTotalFare.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalFare.Location = new System.Drawing.Point(166, 283);
+            this.txtTotalFare.Name = "txtTotalFare";
+            this.txtTotalFare.Size = new System.Drawing.Size(161, 21);
+            this.txtTotalFare.TabIndex = 21;
             // 
             // label20
             // 
@@ -548,6 +600,67 @@
             this.label20.TabIndex = 20;
             this.label20.Text = "Passenger ID";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(17, 67);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(70, 15);
+            this.label23.TabIndex = 24;
+            this.label23.Text = "Passenger ID";
+            // 
+            // txtPassID
+            // 
+            this.txtPassID.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassID.Location = new System.Drawing.Point(130, 64);
+            this.txtPassID.Name = "txtPassID";
+            this.txtPassID.Size = new System.Drawing.Size(121, 21);
+            this.txtPassID.TabIndex = 27;
+            // 
+            // txtRoute
+            // 
+            this.txtRoute.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRoute.Location = new System.Drawing.Point(130, 145);
+            this.txtRoute.Name = "txtRoute";
+            this.txtRoute.Size = new System.Drawing.Size(121, 21);
+            this.txtRoute.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(20, 148);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 15);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Route";
+            // 
+            // comboClass
+            // 
+            this.comboClass.FormattingEnabled = true;
+            this.comboClass.Location = new System.Drawing.Point(130, 257);
+            this.comboClass.Name = "comboClass";
+            this.comboClass.Size = new System.Drawing.Size(121, 21);
+            this.comboClass.TabIndex = 21;
+            this.comboClass.SelectedIndexChanged += new System.EventHandler(this.comboClass_SelectedIndexChanged);
+            // 
+            // comboAvailableSeats
+            // 
+            this.comboAvailableSeats.FormattingEnabled = true;
+            this.comboAvailableSeats.Location = new System.Drawing.Point(130, 35);
+            this.comboAvailableSeats.Name = "comboAvailableSeats";
+            this.comboAvailableSeats.Size = new System.Drawing.Size(121, 21);
+            this.comboAvailableSeats.TabIndex = 15;
+            // 
+            // txtSeats
+            // 
+            this.txtSeats.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeats.Location = new System.Drawing.Point(130, 62);
+            this.txtSeats.Name = "txtSeats";
+            this.txtSeats.Size = new System.Drawing.Size(121, 21);
+            this.txtSeats.TabIndex = 39;
+            // 
             // PassengerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,7 +669,7 @@
             this.ClientSize = new System.Drawing.Size(901, 467);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnCustomers);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -566,7 +679,6 @@
             this.Name = "PassengerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form 3";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -591,43 +703,53 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPassengerID;
+        private System.Windows.Forms.TextBox txtContact;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtTotalFare;
+        private System.Windows.Forms.TextBox txtTrainName;
+        private System.Windows.Forms.TextBox txtFareID;
+        private System.Windows.Forms.TextBox txtScheduleID;
+        private System.Windows.Forms.TextBox txtBookingID;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtDate;
+        private System.Windows.Forms.TextBox txtArrival;
+        private System.Windows.Forms.TextBox txtDeparture;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtStaff;
+        private System.Windows.Forms.TextBox txtPassID;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtRoute;
+        private System.Windows.Forms.ComboBox comboClass;
+        private System.Windows.Forms.ComboBox comboAvailableSeats;
+        private System.Windows.Forms.TextBox txtSeats;
     }
 }

@@ -207,8 +207,10 @@
             this.dataSearchGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataSearchGridView.Location = new System.Drawing.Point(22, 58);
             this.dataSearchGridView.Name = "dataSearchGridView";
+            this.dataSearchGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataSearchGridView.Size = new System.Drawing.Size(666, 107);
             this.dataSearchGridView.TabIndex = 0;
+            this.dataSearchGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSearchGridView_CellContentClick);
             // 
             // panel1
             // 
@@ -269,6 +271,7 @@
             this.btnLogOut.TabIndex = 8;
             this.btnLogOut.Text = "LOG OUT";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // StaffDashboard
             // 

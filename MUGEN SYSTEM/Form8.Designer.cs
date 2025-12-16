@@ -122,6 +122,7 @@
             this.btnLogOut.TabIndex = 9;
             this.btnLogOut.Text = "LOG  OUT";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnDashboard
             // 
@@ -132,6 +133,7 @@
             this.btnDashboard.TabIndex = 8;
             this.btnDashboard.Text = "DASHBOARD";
             this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // btnAccounts
             // 
@@ -142,6 +144,7 @@
             this.btnAccounts.TabIndex = 7;
             this.btnAccounts.Text = "USER ACCOUNTS";
             this.btnAccounts.UseVisualStyleBackColor = true;
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
             // btnSchedules
             // 
@@ -152,6 +155,7 @@
             this.btnSchedules.TabIndex = 6;
             this.btnSchedules.Text = "MANAGE SCHEDULES";
             this.btnSchedules.UseVisualStyleBackColor = true;
+            this.btnSchedules.Click += new System.EventHandler(this.btnSchedules_Click);
             // 
             // btnTrains
             // 
@@ -162,6 +166,7 @@
             this.btnTrains.TabIndex = 5;
             this.btnTrains.Text = "MANAGE TRAINS";
             this.btnTrains.UseVisualStyleBackColor = true;
+            this.btnTrains.Click += new System.EventHandler(this.btnTrains_Click);
             // 
             // btnStations
             // 
@@ -172,6 +177,7 @@
             this.btnStations.TabIndex = 2;
             this.btnStations.Text = "MANAGE STATIONS";
             this.btnStations.UseVisualStyleBackColor = true;
+            this.btnStations.Click += new System.EventHandler(this.btnStations_Click);
             // 
             // label2
             // 

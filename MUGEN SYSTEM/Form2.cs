@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity; 
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity; 
+using MUGENTICKETSYSTEM;
 
 namespace MUGEN_SYSTEM
 {
     public partial class StaffDashboard : Form
     {
-        private UserAccount userLogIn;
+        private readonly UserAccount userLogIn;
         private List<ScheduleComboItem> AllStationsList = new List<ScheduleComboItem>();
-        public StaffDashboard(UserAccount userLogIn)
+        public StaffDashboard(UserAccount userlogIn)
         {
             InitializeComponent();
             this.userLogIn = userLogIn;
@@ -28,23 +29,19 @@ namespace MUGEN_SYSTEM
         private void PopulateStaffFormComboBoxes()
         {
             AllStationsList.Clear();
-
-            // Clear existing data sources before binding
             comboDeparture.DataSource = null;
             comboArrival.DataSource = null;
 
             try
             {
-                using (var db = new MugenSystemDBEntities()) // Replace with your actual DB Context class name if needed
+                using (var db = new MugenSystemDBEntities())
                 {
-                    // Load ALL stations from the DB
                     AllStationsList = db.Stations
                         .Select(s => new ScheduleComboItem { Id = s.StationID, Name = s.StationName })
-                        .OrderBy(s => s.Name) // Order alphabetically
+                        .OrderBy(s => s.Name)
                         .ToList();
                 }
 
-                // Bind the Master List to both ComboBoxes
                 comboDeparture.DataSource = AllStationsList.ToList();
                 comboDeparture.DisplayMember = "Name";
                 comboDeparture.ValueMember = "Id";
@@ -53,7 +50,6 @@ namespace MUGEN_SYSTEM
                 comboArrival.DisplayMember = "Name";
                 comboArrival.ValueMember = "Id";
 
-                // Start with no selection
                 comboDeparture.SelectedIndex = -1;
                 comboArrival.SelectedIndex = -1;
             }
@@ -65,115 +61,143 @@ namespace MUGEN_SYSTEM
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // Retrieve the selected Station Combo Items
             var selectedDepStation = comboDeparture.SelectedItem as ScheduleComboItem;
             var selectedArrStation = comboArrival.SelectedItem as ScheduleComboItem;
-
-            // Get the selected travel date from the calendar control
             DateTime searchDate = monthCalendar.SelectionStart.Date;
 
-            // 1. Initial Validation
+            dataSearchGridView.DataSource = null;
+
             if (selectedDepStation == null || selectedArrStation == null)
             {
                 MessageBox.Show("Please select both a Departure and Arrival Station.", "Missing Search Criteria", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dataSearchGridView.DataSource = null; // Assuming your DataGrid is named dgvAvailableTrains
                 return;
             }
 
-            // Check for same station
             if (selectedDepStation.Id == selectedArrStation.Id)
             {
                 MessageBox.Show("Departure and Arrival Stations cannot be the same.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Perform the Database Search by Route and Date
             try
             {
-                using (var db = new MugenSystemDBEntities()) // Replace with your actual DB Context class name if needed
+                using (var db = new MugenSystemDBEntities())
                 {
-                    // Query the Schedule table: Filter by Departure ID, Arrival ID, and the date part of the DepartureTime.
                     var availableTrips = db.Schedule
                         .Where(s =>
                             s.DepartureStationID == selectedDepStation.Id &&
                             s.ArrivalStationID == selectedArrStation.Id &&
-
-                            // FIX: Use DbFunctions.TruncateTime to correctly compare only the DATE part
                             System.Data.Entity.DbFunctions.TruncateTime(s.DepartureTime) == searchDate
                         )
                         .Select(s => new
                         {
-                            // Select the necessary details to display
-                            TrainName = s.Trains.TrainName, // Gets Train Name via navigation property
+                            // IDs
+                            ScheduleID = s.ScheduleID,
+                            DepartureStationID = s.DepartureStationID,
+                            ArrivalStationID = s.ArrivalStationID,
+
+                            // Display details
+                            // FIX: Using the plural forms for navigation properties to fix CS1061
+                            TrainName = s.Trains.TrainName,
                             DepartureStation = s.Stations.StationName,
                             ArrivalStation = s.Stations1.StationName,
                             DepartureTime = s.DepartureTime,
                             ArrivalTime = s.ArrivalTime
                         })
-                        .OrderBy(t => t.DepartureTime) // Order results chronologically
+                        .OrderBy(t => t.DepartureTime)
                         .ToList();
 
-                    // 3. Bind results to the DataGrid
                     dataSearchGridView.DataSource = availableTrips;
+
+                    // Hide ID columns
+                    if (dataSearchGridView.Columns["ScheduleID"] != null)
+                        dataSearchGridView.Columns["ScheduleID"].Visible = false;
+                    if (dataSearchGridView.Columns["DepartureStationID"] != null)
+                        dataSearchGridView.Columns["DepartureStationID"].Visible = false;
+                    if (dataSearchGridView.Columns["ArrivalStationID"] != null)
+                        dataSearchGridView.Columns["ArrivalStationID"].Visible = false;
 
                     if (!availableTrips.Any())
                     {
-                        MessageBox.Show($"No scheduled trains found from {selectedDepStation.Name} to {selectedArrStation.Name} on {searchDate.ToShortDateString()}.",
-                                        "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"No scheduled trains found...", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during the search: {ex.Message}", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred during the search: {ex.Message}.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            // 1. Check if a row is actually selected in the DataGrid
-            if (dataSearchGridView.SelectedRows.Count == 0)
+            if (dataSearchGridView.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Please select a single available train trip from the list to confirm.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Get the selected row data
             DataGridViewRow selectedRow = dataSearchGridView.SelectedRows[0];
 
-            // We retrieve the values using the column names defined in the btnSearch_Click SELECT statement.
             try
             {
+                // Retrieve data
+                int scheduleId = (int)selectedRow.Cells["ScheduleID"].Value;
+                int depStationId = (int)selectedRow.Cells["DepartureStationID"].Value;
+                int arrStationId = (int)selectedRow.Cells["ArrivalStationID"].Value;
                 string trainName = selectedRow.Cells["TrainName"].Value.ToString();
                 string departureStationName = selectedRow.Cells["DepartureStation"].Value.ToString();
                 string arrivalStationName = selectedRow.Cells["ArrivalStation"].Value.ToString();
-
-                // It's best to pass the full DateTime objects if you need them for booking logic
                 DateTime departureTime = (DateTime)selectedRow.Cells["DepartureTime"].Value;
-                DateTime arrivalTime = (DateTime)selectedRow.Cells["ArrivalTime"].Value;
+                int currentAgentId = SessionManager.CurrentAgentID;
 
-                // --- 3. Instantiate and Show the Passenger Form ---
-
-                // You MUST define the constructor in your PassengerForm to accept these arguments.
+                // Instantiate the PassengerForm with 8 Arguments
                 PassengerForm passengerForm = new PassengerForm(
-                    departureStationName,
-                    arrivalStationName,
-                    departureTime,
-                    arrivalTime,
-                    trainName
+                    scheduleId, depStationId, arrStationId, trainName,
+                    departureStationName, arrivalStationName, departureTime, currentAgentId
                 );
 
-                // If you want the Passenger Form to replace the current form:
-                // passengerForm.Show();
-                // this.Hide(); 
-
-                // If you want the Passenger Form to show modally:
+                // Show the form modally. Execution stops here.
                 passengerForm.ShowDialog();
+
+                // FIX: Execution resumes here. Reload the search results to show the updated seat availability.
+                btnSearch_Click(sender, e);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error confirming selection: {ex.Message}. Ensure all required columns are visible in the grid.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error confirming selection: {ex.Message}.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ShowandManageForm(Form newform)
+        {
+            this.Hide();
+
+            newform.ShowDialog();
+
+            this.Show();
+        }
+
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
+            var confirmResult = MessageBox.Show(
+               "Are you sure you want to log out?",
+               "Confirm Logout",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question
+           );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                LoginForm login = new LoginForm();
+
+                ShowandManageForm(login);
+            }
+        }
+
+        private void dataSearchGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     public class ScheduleComboItem
@@ -181,5 +205,17 @@ namespace MUGEN_SYSTEM
         public int Id { get; set; } // The Station ID
         public string Name { get; set; } // The Station Name
         public override string ToString() => Name;
+    }
+    public class FareComboItem
+    {
+        public int FareId { get; set; }
+        public string ClassName { get; set; }
+        public decimal FareAmount { get; set; }
+        public override string ToString() => ClassName; // Display the ClassName in the ComboBox
+
+    }
+    public static class SessionManager
+    {
+        public static int CurrentAgentID { get; set; }
     }
 }
