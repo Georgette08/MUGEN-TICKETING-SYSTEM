@@ -91,7 +91,6 @@ namespace MUGEN_SYSTEM
                 if (int.TryParse(bookingIdValue, out retrievedBookingId))
                 {
                     _selectedBookingId = retrievedBookingId;
-                    // Call to receipt logic (LoadReceiptDetailsToPanel) REMOVED
                 }
                 else
                 {
@@ -134,8 +133,8 @@ namespace MUGEN_SYSTEM
 
                             MessageBox.Show("Booking deleted successfully.", "Deletion Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            LoadCustomerBookingLog(); // Refresh the grid
-                            _selectedBookingId = 0; // Reset selected ID
+                            LoadCustomerBookingLog(); 
+                            _selectedBookingId = 0; 
                         }
                     }
                 }

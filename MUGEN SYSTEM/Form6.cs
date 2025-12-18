@@ -59,7 +59,6 @@ namespace MUGEN_SYSTEM
 
             Capacity.Add(1324);
             Capacity.Add(639);
-            Capacity.Add(639);
             Capacity.Add(731);
             Capacity.Add(731);
             Capacity.Add(402);
@@ -309,61 +308,9 @@ namespace MUGEN_SYSTEM
             LoadTrainsDataGrid();
             ClearInputFields();
         }
-
-        private void ShowandManageForm(Form newform)
+        private void txtCapacity_TextChanged(object sender, EventArgs e)
         {
-            this.Hide();
 
-            newform.ShowDialog();
-
-            this.Show();
-        }
-
-        private void btnStations_Click(object sender, EventArgs e)
-        {
-            StationsDashboard stations = new StationsDashboard(userLogIn);
-            ShowandManageForm(stations);
-        }
-
-        private void btnSchecules_Click(object sender, EventArgs e)
-        {
-            SchedulesDashboard schedules = new SchedulesDashboard(userLogIn);
-            ShowandManageForm(schedules);
-        }
-
-        private void btnFares_Click(object sender, EventArgs e)
-        {
-            FaresDashboard fares = new FaresDashboard(userLogIn);
-            ShowandManageForm(fares);
-        }
-
-        private void btnUserAccount_Click(object sender, EventArgs e)
-        {
-            UserDashboard users = new UserDashboard(userLogIn);
-            ShowandManageForm(users);
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            AdminDashboard admin = new AdminDashboard(userLogIn);
-            ShowandManageForm(admin);
-        }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show(
-              "Are you sure you want to log out?",
-              "Confirm Logout",
-              MessageBoxButtons.YesNo,
-              MessageBoxIcon.Question
-          );
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                LoginForm login = new LoginForm();
-
-                ShowandManageForm(login);
-            }
         }
     }
 }

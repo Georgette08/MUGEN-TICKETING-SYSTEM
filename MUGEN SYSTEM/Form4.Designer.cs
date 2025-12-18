@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelNav = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,38 +42,40 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.panelPic1 = new System.Windows.Forms.Panel();
+            this.panelPic2 = new System.Windows.Forms.Panel();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.panelNav.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelNav
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.panel1.Controls.Add(this.btnLogOut);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.btnUserAccounts);
-            this.panel1.Controls.Add(this.btnFares);
-            this.panel1.Controls.Add(this.btnSchedules);
-            this.panel1.Controls.Add(this.btnTrains);
-            this.panel1.Controls.Add(this.btnStations);
-            this.panel1.Location = new System.Drawing.Point(3, 36);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 430);
-            this.panel1.TabIndex = 0;
+            this.panelNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
+            this.panelNav.Controls.Add(this.btnDashboard);
+            this.panelNav.Controls.Add(this.btnLogOut);
+            this.panelNav.Controls.Add(this.label5);
+            this.panelNav.Controls.Add(this.label4);
+            this.panelNav.Controls.Add(this.btnUserAccounts);
+            this.panelNav.Controls.Add(this.btnFares);
+            this.panelNav.Controls.Add(this.btnSchedules);
+            this.panelNav.Controls.Add(this.btnTrains);
+            this.panelNav.Controls.Add(this.btnStations);
+            this.panelNav.Location = new System.Drawing.Point(3, 33);
+            this.panelNav.Name = "panelNav";
+            this.panelNav.Size = new System.Drawing.Size(194, 425);
+            this.panelNav.TabIndex = 0;
             // 
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(89, 349);
+            this.btnLogOut.Location = new System.Drawing.Point(102, 351);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(78, 29);
             this.btnLogOut.TabIndex = 7;
@@ -166,7 +168,7 @@
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel4.Location = new System.Drawing.Point(3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(886, 26);
+            this.panel4.Size = new System.Drawing.Size(892, 26);
             this.panel4.TabIndex = 3;
             // 
             // panel5
@@ -196,18 +198,18 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 9;
             // 
-            // panel2
+            // panelMain
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(203, 36);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 247);
-            this.panel2.TabIndex = 1;
+            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelMain.Controls.Add(this.label7);
+            this.panelMain.Controls.Add(this.label6);
+            this.panelMain.Controls.Add(this.label3);
+            this.panelMain.Controls.Add(this.panel3);
+            this.panelMain.Controls.Add(this.label2);
+            this.panelMain.Location = new System.Drawing.Point(203, 33);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(692, 229);
+            this.panelMain.TabIndex = 1;
             // 
             // label7
             // 
@@ -243,28 +245,39 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(547, 26);
+            this.panel3.Location = new System.Drawing.Point(564, 27);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(107, 150);
             this.panel3.TabIndex = 10;
             // 
-            // panel6
+            // panelPic1
             // 
-            this.panel6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel6.BackgroundImage")));
-            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel6.Location = new System.Drawing.Point(203, 289);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(341, 166);
-            this.panel6.TabIndex = 13;
+            this.panelPic1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelPic1.BackgroundImage")));
+            this.panelPic1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelPic1.Location = new System.Drawing.Point(203, 268);
+            this.panelPic1.Name = "panelPic1";
+            this.panelPic1.Size = new System.Drawing.Size(342, 190);
+            this.panelPic1.TabIndex = 13;
             // 
-            // panel7
+            // panelPic2
             // 
-            this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
-            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel7.Location = new System.Drawing.Point(550, 289);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(339, 166);
-            this.panel7.TabIndex = 14;
+            this.panelPic2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelPic2.BackgroundImage")));
+            this.panelPic2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelPic2.Location = new System.Drawing.Point(550, 268);
+            this.panelPic2.Name = "panelPic2";
+            this.panelPic2.Size = new System.Drawing.Size(345, 190);
+            this.panelPic2.TabIndex = 14;
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Location = new System.Drawing.Point(22, 288);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(145, 29);
+            this.btnDashboard.TabIndex = 8;
+            this.btnDashboard.Text = "DASHBOARD";
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // AdminDashboard
             // 
@@ -272,28 +285,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.ClientSize = new System.Drawing.Size(901, 467);
-            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panelPic2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelPic1);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelNav);
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ADMIN DASHBOARD";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelNav.ResumeLayout(false);
+            this.panelNav.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelNav;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel5;
@@ -303,15 +316,16 @@
         private System.Windows.Forms.Button btnUserAccounts;
         private System.Windows.Forms.Button btnFares;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelPic1;
+        private System.Windows.Forms.Panel panelPic2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDashboard;
     }
 }

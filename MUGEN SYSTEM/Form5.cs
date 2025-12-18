@@ -31,7 +31,6 @@ namespace MUGEN_SYSTEM
             LoadStationsDataGrid();
             comboStationName.Items.Clear();       
 
-            //  Predefined station names 
             comboStationName.Items.Add("Tokaido Shinkansen");
             comboStationName.Items.Add("Sanyo Shinkansen");
             comboStationName.Items.Add("Tohoku Shinkansen");
@@ -223,7 +222,6 @@ namespace MUGEN_SYSTEM
                 return;
             }
 
-            // ✅ FIX: Retrieve data from TextBoxes
             string stationName = comboStationName.SelectedItem?.ToString();
             string city = txtCity.Text;
             string lineServed = txtLineServed.Text;
@@ -264,76 +262,6 @@ namespace MUGEN_SYSTEM
         private void comboStationName_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             UpdateDependentFields();
-        }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show(
-               "Are you sure you want to log out?",
-               "Confirm Logout",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question
-           );
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                LoginForm login = new LoginForm();
-
-                ShowandManageForm(login);
-            }
-        }
-
-        private void ShowandManageForm(Form newform)
-        {
-            this.Hide();
-
-            newform.ShowDialog();
-
-            this.Show();
-        }
-
-        private void btnTrains_Click(object sender, EventArgs e)
-        {
-           TrainsDashboard trains = new TrainsDashboard(userLogIn);
-            ShowandManageForm(trains);
-
-
-            this.Close();
-        }
-
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            SchedulesDashboard schedules = new SchedulesDashboard(userLogIn);
-            ShowandManageForm(schedules);
-
-
-            this.Close();
-        }
-
-        private void btnFares_Click(object sender, EventArgs e)
-        {
-            FaresDashboard fares = new FaresDashboard(userLogIn);  
-            ShowandManageForm(fares);
-
-
-            this.Close();
-        }
-
-        private void btnAccounts_Click(object sender, EventArgs e)
-        {
-            UserDashboard Account = new UserDashboard(userLogIn);
-            ShowandManageForm(Account);
-
-
-            this.Close();
-        }
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adminDashboard = new AdminDashboard(userLogIn);
-            ShowandManageForm(adminDashboard);
-
-
-            this.Close();
         }
     }
 }

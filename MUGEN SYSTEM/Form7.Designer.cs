@@ -28,20 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchedulesDashboard));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnAccounts = new System.Windows.Forms.Button();
-            this.btnFares = new System.Windows.Forms.Button();
-            this.btnTrains = new System.Windows.Forms.Button();
-            this.btnStations = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboArrival = new System.Windows.Forms.ComboBox();
             this.comboDeparture = new System.Windows.Forms.ComboBox();
@@ -63,144 +50,11 @@
             this.dataScheduleGridView = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataScheduleGridView)).BeginInit();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 26);
-            this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ADMIN DASHBOARD";
-            // 
-            // panel5
-            // 
-            this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
-            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Location = new System.Drawing.Point(3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(34, 20);
-            this.panel5.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.btnLogOut);
-            this.panel2.Controls.Add(this.btnDashboard);
-            this.panel2.Controls.Add(this.btnAccounts);
-            this.panel2.Controls.Add(this.btnFares);
-            this.panel2.Controls.Add(this.btnTrains);
-            this.panel2.Controls.Add(this.btnStations);
-            this.panel2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(2, 34);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(194, 430);
-            this.panel2.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(63, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "SYSTEM";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(23, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "MUGEN TICKETING";
-            // 
-            // btnLogOut
-            // 
-            this.btnLogOut.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(93, 354);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
-            this.btnLogOut.TabIndex = 5;
-            this.btnLogOut.Text = "LOG OUT";
-            this.btnLogOut.UseVisualStyleBackColor = true;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.Location = new System.Drawing.Point(26, 265);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(145, 29);
-            this.btnDashboard.TabIndex = 4;
-            this.btnDashboard.Text = "DASHBORD";
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
-            // 
-            // btnAccounts
-            // 
-            this.btnAccounts.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccounts.Location = new System.Drawing.Point(26, 229);
-            this.btnAccounts.Name = "btnAccounts";
-            this.btnAccounts.Size = new System.Drawing.Size(145, 29);
-            this.btnAccounts.TabIndex = 3;
-            this.btnAccounts.Text = "USER ACCOUNTS";
-            this.btnAccounts.UseVisualStyleBackColor = true;
-            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
-            // 
-            // btnFares
-            // 
-            this.btnFares.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFares.Location = new System.Drawing.Point(26, 194);
-            this.btnFares.Name = "btnFares";
-            this.btnFares.Size = new System.Drawing.Size(145, 29);
-            this.btnFares.TabIndex = 2;
-            this.btnFares.Text = "MANAGE FARES";
-            this.btnFares.UseVisualStyleBackColor = true;
-            this.btnFares.Click += new System.EventHandler(this.btnFares_Click);
-            // 
-            // btnTrains
-            // 
-            this.btnTrains.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrains.Location = new System.Drawing.Point(26, 159);
-            this.btnTrains.Name = "btnTrains";
-            this.btnTrains.Size = new System.Drawing.Size(145, 29);
-            this.btnTrains.TabIndex = 1;
-            this.btnTrains.Text = "MANAGE TRAINS";
-            this.btnTrains.UseVisualStyleBackColor = true;
-            this.btnTrains.Click += new System.EventHandler(this.btnTrains_Click);
-            // 
-            // btnStations
-            // 
-            this.btnStations.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStations.Location = new System.Drawing.Point(26, 124);
-            this.btnStations.Name = "btnStations";
-            this.btnStations.Size = new System.Drawing.Size(145, 29);
-            this.btnStations.TabIndex = 0;
-            this.btnStations.Text = "MANAGE STATIONS";
-            this.btnStations.UseVisualStyleBackColor = true;
-            this.btnStations.Click += new System.EventHandler(this.btnStations_Click);
             // 
             // panel3
             // 
@@ -222,9 +76,10 @@
             this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.btnAdd);
-            this.panel3.Location = new System.Drawing.Point(202, 34);
+            this.panel3.Location = new System.Drawing.Point(6, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(687, 234);
+            this.panel3.Size = new System.Drawing.Size(698, 234);
             this.panel3.TabIndex = 2;
             // 
             // comboArrival
@@ -255,13 +110,17 @@
             // 
             // dtpArrivalTime
             // 
+            this.dtpArrivalTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpArrivalTime.Location = new System.Drawing.Point(217, 196);
             this.dtpArrivalTime.Name = "dtpArrivalTime";
             this.dtpArrivalTime.Size = new System.Drawing.Size(146, 20);
             this.dtpArrivalTime.TabIndex = 2;
+            this.dtpArrivalTime.ValueChanged += new System.EventHandler(this.dtpArrivalTime_ValueChanged);
             // 
             // dtpDepartureTime
             // 
+            this.dtpDepartureTime.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            this.dtpDepartureTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpDepartureTime.Location = new System.Drawing.Point(217, 168);
             this.dtpDepartureTime.Name = "dtpDepartureTime";
             this.dtpDepartureTime.Size = new System.Drawing.Size(146, 20);
@@ -389,19 +248,20 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel4.Controls.Add(this.dataScheduleGridView);
             this.panel4.Controls.Add(this.panel6);
-            this.panel4.Location = new System.Drawing.Point(202, 274);
+            this.panel4.Location = new System.Drawing.Point(6, 244);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(687, 187);
+            this.panel4.Size = new System.Drawing.Size(698, 187);
             this.panel4.TabIndex = 2;
             // 
             // dataScheduleGridView
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataScheduleGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataScheduleGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataScheduleGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataScheduleGridView.Location = new System.Drawing.Point(19, 59);
+            this.dataScheduleGridView.Location = new System.Drawing.Point(6, 58);
             this.dataScheduleGridView.Name = "dataScheduleGridView";
-            this.dataScheduleGridView.Size = new System.Drawing.Size(650, 101);
+            this.dataScheduleGridView.Size = new System.Drawing.Size(680, 124);
             this.dataScheduleGridView.TabIndex = 3;
             this.dataScheduleGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataScheduleGridView_CellContentClick);
             this.dataScheduleGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataScheduleGridView_CellContentClick);
@@ -410,9 +270,9 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(19, 15);
+            this.panel6.Location = new System.Drawing.Point(6, 14);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(651, 38);
+            this.panel6.Size = new System.Drawing.Size(681, 38);
             this.panel6.TabIndex = 2;
             // 
             // label5
@@ -431,19 +291,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(60)))), ((int)(((byte)(95)))));
-            this.ClientSize = new System.Drawing.Size(901, 467);
+            this.ClientSize = new System.Drawing.Size(705, 439);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "SchedulesDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCHEDULE DASHBOARD";
             this.Load += new System.EventHandler(this.SchedulesDashboard_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -455,21 +309,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.Button btnAccounts;
-        private System.Windows.Forms.Button btnFares;
-        private System.Windows.Forms.Button btnTrains;
-        private System.Windows.Forms.Button btnStations;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label dtpArrival;
         private System.Windows.Forms.Label dtpDeparture;
         private System.Windows.Forms.Label label9;

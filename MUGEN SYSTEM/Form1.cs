@@ -26,58 +26,62 @@ namespace MUGENTICKETSYSTEM
         }
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+            string username = txtUsername.Text.Trim(); 
+            string password = txtPassword.Text;
+
+            try
+            { 
+                using (var db = new MugenSystemDBEntities())
+                {
+
+                    var user = db.UserAccount.FirstOrDefault(u => u.Username == username);
+
+                    if (user == null || !user.Password.Equals(password))
+                    {
+                        MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtPassword.Clear();
+                        return;
+                    }
+
+                    if (user.Status != null && user.Status.Equals("Inactive", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Your account is currently inactive. Please contact your Administrator.",
+                                        "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        txtPassword.Clear();
+                        return;
+                    }
+
+                    MessageBox.Show($"Login successful! Welcome, {user.FullName}", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ClearFields();
+                    SessionManager.CurrentAgentID = user.UserID; 
+
+                    Form dashboard = null;
+
+                    if (user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dashboard = new AdminDashboard(user);
+                    }
+                    else if (user.Role.Equals("Staff", StringComparison.OrdinalIgnoreCase))
+                    {
+                        dashboard = new StaffDashboard(user);
+                    }
+                    else
+                    {
+                        MessageBox.Show("User role not recognized. Access denied.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    if (dashboard != null)
+                    {
+                        this.Hide();
+                        dashboard.ShowDialog();
+                        this.Show();
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                string username = txtUsername.Text;
-                string password = txtPassword.Text;
-
-                // Assuming 'db' is your MugenSystemDBEntities instance
-                var user = db.UserAccount.Where(u => u.Username.Equals(username)).FirstOrDefault();
-
-                if (user == null || !user.Password.Equals(password))
-                {
-                    MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPassword.Text = "";
-                    return;
-                }
-
-                MessageBox.Show("Login successful! Welcome, " + user.Role, "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                ClearFields();
-                // It's generally better to hide the current form after the new form is shown successfully
-                // this.Hide(); 
-
-                string userRole = user.Role;
-
-                Form dashboard = null;
-
-                if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
-                {
-                    // ASSUMPTION: The UserAccount class has a property named UserID or AgentID for the PK.
-                    // If Admin roles need to perform staff-like actions later, they should also set the SessionManager.
-                    SessionManager.CurrentAgentID = user.UserID; // Set the Agent ID for the session
-                    dashboard = new AdminDashboard(user);
-                }
-                else if (userRole.Equals("Staff", StringComparison.OrdinalIgnoreCase))
-                {
-                    // CRITICAL FIX: Assign the authenticated user's ID to the Session Manager.
-                    // This is what prevents AgentID from being 0 in the booking table.
-                    SessionManager.CurrentAgentID = user.UserID; // <-- The essential line!
-
-                    dashboard = new StaffDashboard(user);
-                }
-                else
-                {
-                    MessageBox.Show("User role not recognized. Access denied.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                if (dashboard != null)
-                {
-                    this.Hide(); // Now hide the login form
-                    dashboard.ShowDialog();
-                }
-
-                // This ensures the LoginForm reappears after the dashboard is closed (if ShowDialog was used)
-                this.Show();
+                MessageBox.Show($"Database connection error: {ex.Message}", "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void ClearFields()

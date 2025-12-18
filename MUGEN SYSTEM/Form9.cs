@@ -111,21 +111,17 @@ namespace MUGEN_SYSTEM
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             {
-                // 🛑 CRITICAL CHECK: Stop if no row is selected (ID is -1)
                 if (selectedUserID == -1)
                 {
                     MessageBox.Show("Please select an account from the grid to update.", "Select Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }
-
-                // Retrieve updated values from input fields
+                }              
                 string username = txtUsername.Text.Trim();
                 string password = txtPassword.Text.Trim();
                 string fullName = txtFullName.Text.Trim();
                 string role = comboRole.SelectedItem?.ToString();
                 string status = comboStatus.SelectedItem?.ToString();
 
-                // Basic validation
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(role))
                 {
                     MessageBox.Show("Username and Role are required for the update.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -136,17 +132,16 @@ namespace MUGEN_SYSTEM
                 {
                     using (var db = new MugenSystemDBEntities())
                     {
-                        var userToUpdate = db.UserAccount.Find(selectedUserID); // Find by ID
+                        var userToUpdate = db.UserAccount.Find(selectedUserID); 
 
                         if (userToUpdate != null)
                         {
-                            // Update properties
+
                             userToUpdate.Username = username;
                             userToUpdate.FullName = fullName;
                             userToUpdate.Role = role;
                             userToUpdate.Status = status;
 
-                            // Update password only if the password field is not empty
                             if (!string.IsNullOrEmpty(password))
                             {
                                 userToUpdate.Password = password;
@@ -156,9 +151,8 @@ namespace MUGEN_SYSTEM
 
                             MessageBox.Show("User account updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // 🛑 Final Step: Refresh and Reset
                             LoadUsersDataGrid();
-                            ClearInputFields(); // Resets selectedUserID to -1
+                            ClearInputFields(); 
                         }
                     }
                 }
@@ -172,14 +166,13 @@ namespace MUGEN_SYSTEM
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // 🛑 CRITICAL CHECK: Stop if no row is selected (ID is -1)
+ 
             if (selectedUserID == -1)
             {
                 MessageBox.Show("Please select an account from the grid to delete.", "Select Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Confirmation before deleting
             var confirmResult = MessageBox.Show("Are you sure you want to delete this user account?",
                                                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -189,7 +182,7 @@ namespace MUGEN_SYSTEM
                 {
                     using (var db = new MugenSystemDBEntities())
                     {
-                        var userToDelete = db.UserAccount.Find(selectedUserID); // Find by ID
+                        var userToDelete = db.UserAccount.Find(selectedUserID); 
 
                         if (userToDelete != null)
                         {
@@ -198,9 +191,8 @@ namespace MUGEN_SYSTEM
 
                             MessageBox.Show("User account deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // 🛑 Final Step: Refresh and Reset
                             LoadUsersDataGrid();
-                            ClearInputFields(); // Resets selectedUserID to -1
+                            ClearInputFields();
                         }
                     }
                 }
@@ -244,85 +236,22 @@ namespace MUGEN_SYSTEM
         }
         private void ClearInputFields()
         {
-            // 1. Reset the tracking variable for UPDATE/DELETE operations
+
             selectedUserID = -1;
 
-            // 2. Clear data from all input TextBoxes
             UserID.Clear();
             txtUsername.Clear();
             txtPassword.Clear();
             txtFullName.Clear();
 
-            // 3. Reset ComboBoxes to their first item
             if (comboRole.Items.Count > 0)
             {
                 comboRole.SelectedIndex = 0;
             }
             if (comboStatus.Items.Count > 0)
             {
-                comboStatus.SelectedIndex = 0;
-            }
-
-            // 4. Clear any remaining selection in the DataGridView
-            dataGridViewUsers.ClearSelection();
-
-            // Optional: Set focus back to the first input field
-            txtUsername.Focus();
-        }
-        private void ShowandManageForm(Form newform)
-        {
-            this.Hide();
-
-            newform.ShowDialog();
-
-            this.Show();
-        }
-
-        private void btnStations_Click(object sender, EventArgs e)
-        {
-            StationsDashboard stations = new StationsDashboard(userLogIn);
-            ShowandManageForm(stations);
-        }
-
-        private void btnTrains_Click(object sender, EventArgs e)
-        {
-            TrainsDashboard trains = new TrainsDashboard(this.userLogIn);
-            ShowandManageForm(trains);
-        }
-
-        private void btnSchedules_Click(object sender, EventArgs e)
-        {
-            SchedulesDashboard schedules = new SchedulesDashboard(this.userLogIn);
-            ShowandManageForm(schedules);
-        }
-
-        private void btnFares_Click(object sender, EventArgs e)
-        {
-            FaresDashboard fares = new FaresDashboard(this.userLogIn);
-            ShowandManageForm(fares);
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            AdminDashboard admin = new AdminDashboard(this.userLogIn);
-            ShowandManageForm(admin);
-        }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show(
-               "Are you sure you want to log out?",
-               "Confirm Logout",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question
-           );
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                LoginForm login = new LoginForm();
-
-                ShowandManageForm(login);
-            }
+               comboStatus.SelectedIndex = 0;
+            }        
         }
     }
 }

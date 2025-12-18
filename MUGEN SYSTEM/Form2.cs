@@ -42,7 +42,6 @@ namespace MUGEN_SYSTEM
                         .ToList();
                 }
 
-                // Bind the data sources
                 comboDeparture.DataSource = AllStationsList.ToList();
                 comboDeparture.DisplayMember = "Name";
                 comboDeparture.ValueMember = "Id";
@@ -92,15 +91,13 @@ namespace MUGEN_SYSTEM
                         )
                         .Select(s => new
                         {
-                            // CRITICAL IDs
                             ScheduleID = s.ScheduleID,
                             DepartureStationID = s.DepartureStationID,
                             ArrivalStationID = s.ArrivalStationID,
 
-                            // Display details (Using the most common Entity Framework Navigation Property names)
-                            TrainName = s.Trains.TrainName,           // Corrected Navigation
-                            DepartureStation = s.Stations.StationName, // Corrected Navigation
-                            ArrivalStation = s.Stations1.StationName,  // Corrected Navigation
+                            TrainName = s.Trains.TrainName,           
+                            DepartureStation = s.Stations.StationName, 
+                            ArrivalStation = s.Stations1.StationName,  
                             DepartureTime = s.DepartureTime,
                             ArrivalTime = s.ArrivalTime
                         })
@@ -212,8 +209,8 @@ namespace MUGEN_SYSTEM
     }
     public class ScheduleComboItem
     {
-        public int Id { get; set; } // The Station ID
-        public string Name { get; set; } // The Station Name
+        public int Id { get; set; } 
+        public string Name { get; set; } 
         public override string ToString() => Name;
     }
     public class FareComboItem
@@ -221,7 +218,7 @@ namespace MUGEN_SYSTEM
         public int FareId { get; set; }
         public string ClassName { get; set; }
         public decimal FareAmount { get; set; }
-        public override string ToString() => ClassName; // Display the ClassName in the ComboBox
+        public override string ToString() => ClassName; 
 
     }
     public static class SessionManager

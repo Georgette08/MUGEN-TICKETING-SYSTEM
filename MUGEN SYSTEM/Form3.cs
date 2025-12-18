@@ -15,7 +15,6 @@ namespace MUGEN_SYSTEM
     public partial class PassengerForm : Form
     {
         private readonly UserAccount userlogIn;
-
         private int _scheduleId;
         private int _depStationId;
         private int _arrStationId;
@@ -24,8 +23,6 @@ namespace MUGEN_SYSTEM
         private string _arrStationName;
         private DateTime _departureTime;
         private int _agentId;
-
-        private const int MAX_SEAT_CAPACITY = 100;
         public PassengerForm(UserAccount userlogIn,int scheduleId, int depStationId, int arrStationId, string trainName, string depName,
             string arrName, DateTime departureTime, int agentId)
         {
@@ -38,7 +35,10 @@ namespace MUGEN_SYSTEM
             _depStationName = depName;
             _arrStationName = arrName;
             _departureTime = departureTime;
-            _agentId = agentId; // Store the Agent ID
+            _agentId = agentId;
+
+            
+            comboAvailableSeats.SelectedIndexChanged += comboAvailableSeats_SelectedIndexChanged;
 
             DisplayTripDetails();
             LoadFareClasses();
@@ -47,15 +47,16 @@ namespace MUGEN_SYSTEM
         private void DisplayTripDetails()
         {
             txtScheduleID.Text = _scheduleId.ToString();
-            txtTrainName.Text = _trainName; // ASSUMED: txtTrainName should be txtTrain based on image_809aa4
+            txtTrainName.Text = _trainName;
             txtDeparture.Text = _depStationName;
             txtArrival.Text = _arrStationName;
             txtDate.Text = _departureTime.ToShortDateString();
             txtRoute.Text = $"{_depStationName} to {_arrStationName}";
             txtStaff.Text = _agentId.ToString();
-
-            // Initializing Fare/Seat
             txtTotalFare.Text = "0.00";
+
+        
+            txtSeats.ReadOnly = true;
         }
 
         private void LoadFareClasses()
@@ -66,28 +67,23 @@ namespace MUGEN_SYSTEM
             {
                 using (var db = new MugenSystemDBEntities())
                 {
-                    // Get all unique Fare Classes that apply to this route (Dep/Arr Station IDs)
                     var fareClasses = db.Fare
                         .Where(f => f.DepartureStationID == _depStationId && f.ArrivalStationID == _arrStationId)
                         .Select(f => new FareComboItem
                         {
                             FareId = f.FareID,
-                            ClassName = f.ClassOfService // ASSUMED: f.ClassOfService is f.ClassName
-                            // FIX 5: Removed the conflicting 'FareAmount = f.FareAmount' line (CS0117 fix)
+                            ClassName = f.ClassOfService                           
                         })
                         .ToList();
 
-                    // ... (Binding logic is fine) ...
                     comboClass.DataSource = fareClasses;
                     comboClass.DisplayMember = "ClassName";
                     comboClass.ValueMember = "FareId";
 
-                    // Attach the event handler to calculate fare when class changes
                     comboClass.SelectedIndexChanged += comboClass_SelectedIndexChanged;
 
                     if (fareClasses.Any())
                     {
-                        // Select the first class by default and trigger the change event
                         comboClass.SelectedIndex = 0;
                     }
                 }
@@ -105,43 +101,37 @@ namespace MUGEN_SYSTEM
             {
                 using (var db = new MugenSystemDBEntities())
                 {
-                    var bookedSeatNumbers = db.Bookings
-                                             .Where(b => b.ScheduleID == _scheduleId)
-                                             .Select(b => b.SeatNumber)
-                                             .ToList();
+                    var currentSchedule = db.Schedule.FirstOrDefault(s => s.ScheduleID == _scheduleId);
 
-                    int bookedSeatsCount = bookedSeatNumbers.Count;
-                    int availableSeats = MAX_SEAT_CAPACITY - bookedSeatsCount;
-
-                    // FIX 6: Changed txtSeats to comboAvailableSeats (Dropdown)
-                    // If you have a separate textbox to DISPLAY the total count:
-                    // txtAvailableSeatsDisplay.Text = availableSeats.ToString();
-
-                    if (availableSeats > 0)
+                    if (currentSchedule != null)
                     {
-                        for (int i = 1; i <= MAX_SEAT_CAPACITY; i++)
+                        var linkedTrain = db.Trains.FirstOrDefault(t => t.TrainID == currentSchedule.TrainID);
+
+                        if (linkedTrain != null)
                         {
-                            string seatNum = i.ToString();
-                            if (!bookedSeatNumbers.Contains(seatNum))
+                          
+                            int actualCapacity = (int)linkedTrain.Capacity;
+                       
+                            var bookedSeats = db.Bookings
+                                .Where(b => b.ScheduleID == _scheduleId)
+                                .Select(b => b.SeatNumber)
+                                .ToList();
+
+                            for (int i = 1; i <= actualCapacity; i++)
                             {
-                                comboAvailableSeats.Items.Add(seatNum);
+                                string seat = i.ToString();
+                                if (!bookedSeats.Contains(seat))
+                                {
+                                    comboAvailableSeats.Items.Add(seat);
+                                }
                             }
                         }
-                    }
-
-                    if (comboAvailableSeats.Items.Count > 0)
-                    {
-                        comboAvailableSeats.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        MessageBox.Show("This train is fully booked!", "No Seats Available", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading available seats: {ex.Message}", "Database Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
         private void comboClass_SelectedIndexChanged(object sender, EventArgs e)
@@ -162,7 +152,6 @@ namespace MUGEN_SYSTEM
                         if (fareAmount.HasValue)
                         {
                             txtTotalFare.Text = fareAmount.Value.ToString("N2");
-                            // Assuming you have a txtFareID control:
                             txtFareID.Text = fareId.ToString();
                         }
                         else
@@ -187,102 +176,79 @@ namespace MUGEN_SYSTEM
         {
             using (var db = new MugenSystemDBEntities())
             {
-                // 1. DATA VALIDATION AND RETRIEVAL
-
-                string firstName = txtFirstName.Text.Trim();
-                string lastName = txtLastName.Text.Trim();
-                string contactNumber = txtContact.Text.Trim(); // Use your actual control name
-                string email = txtEmail.Text.Trim();       // Use your actual control name
-
-                if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
-                {
-                    MessageBox.Show("Please enter the passenger's full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Retrieve Booking Details
-                if (!int.TryParse(txtFareID.Text, out int fareId))
-                {
-                    MessageBox.Show("Fare Class must be selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                string seatNumber;
-                if (comboAvailableSeats.SelectedItem != null)
-                {
-                    seatNumber = comboAvailableSeats.SelectedItem.ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Please select a Seat Number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!decimal.TryParse(txtTotalFare.Text.Replace("₱", "").Replace("$", ""), out decimal totalFarePaid))
-                {
-                    MessageBox.Show("Total Fare is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-
-                // 2. PASSENGER RECORD INSERT/LOOKUP
-                int passengerId = 0;
-
-                var existingPassenger = db.Passengers.FirstOrDefault(p => p.ContactNumber == contactNumber || p.Email == email);
-
-                if (existingPassenger != null)
-                {
-                    passengerId = existingPassenger.PassengerID;
-                }
-                else
-                {
-                    // Use the correct singular Entity type name: Passenger
-                    var newPassenger = new Passengers
-                    {
-                        FirstName = firstName,
-                        LastName = lastName,
-                        ContactNumber = contactNumber,
-                        Email = email
-                    };
-
-                    db.Passengers.Add(newPassenger);
-                    db.SaveChanges(); // CRITICAL: Save to get the new PassengerID
-
-                    passengerId = newPassenger.PassengerID;
-                    txtPassengerID.Text = passengerId.ToString();
-                }
-
-
-                // 3. BOOKING RECORD INSERT
                 try
                 {
-                    // Use the correct singular Entity type name: Booking
+                    string firstName = txtFirstName.Text.Trim();
+                    string lastName = txtLastName.Text.Trim();
+                    string contactNumber = txtContact.Text.Trim();
+                    string email = txtEmail.Text.Trim();
+                    string seatNumber = txtSeats.Text; 
+
+                    if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrEmpty(seatNumber))
+                    {
+                        MessageBox.Show("Please fill in the Passenger Name and select a Seat Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!int.TryParse(txtFareID.Text, out int fareId) || !decimal.TryParse(txtTotalFare.Text.Replace("₱", "").Replace(",", ""), out decimal totalFare))
+                    {
+                        MessageBox.Show("Invalid Fare or Class selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    bool isSeatTaken = db.Bookings.Any(b => b.ScheduleID == _scheduleId && b.SeatNumber == seatNumber);
+                    if (isSeatTaken)
+                    {
+                        MessageBox.Show("This seat was just booked by another agent. Please select a different seat.", "Seat Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        LoadAvailableSeats(); 
+                        return;
+                    }
+                    var existingPassenger = db.Passengers.FirstOrDefault(p => p.ContactNumber == contactNumber || p.Email == email);
+                    int finalPassengerId;
+
+                    if (existingPassenger != null)
+                    {
+                        finalPassengerId = existingPassenger.PassengerID;
+                    }
+                    else
+                    {
+                        var newPassenger = new Passengers
+                        {
+                            FirstName = firstName,
+                            LastName = lastName,
+                            ContactNumber = contactNumber,
+                            Email = email
+                        };
+                        db.Passengers.Add(newPassenger);
+                        db.SaveChanges(); 
+                        finalPassengerId = newPassenger.PassengerID;
+                    }
+
                     var newBooking = new Bookings
                     {
                         ScheduleID = _scheduleId,
-                        PassengerID = passengerId,
+                        PassengerID = finalPassengerId,
                         FareID = fareId,
                         SeatNumber = seatNumber,
-                        TotalFarePaid = totalFarePaid,
+                        TotalFarePaid = totalFare,
                         BookingDate = DateTime.Now,
-                        AgentID = _agentId                // This value is now correct (not 0)
+                        AgentID = _agentId 
                     };
 
                     db.Bookings.Add(newBooking);
                     db.SaveChanges();
 
-                    // Success: Update UI and close form
                     txtBookingID.Text = newBooking.BookingID.ToString();
+                    txtPassengerID.Text = finalPassengerId.ToString();
 
-                    MessageBox.Show($"Booking successful! Booking ID: {newBooking.BookingID}", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Booking confirmed successfully!\n\nBooking ID: {newBooking.BookingID}\nSeat: {seatNumber}\nPassenger: {firstName} {lastName}",
+                                    "Mugen System - Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     btnConfirm.Enabled = false;
-                    this.Close(); // Return control to the StaffDashboard
-
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Booking failed. Please check data constraints. Error: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"System Error during booking: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -307,13 +273,11 @@ namespace MUGEN_SYSTEM
                 return;
             }
 
-            // Retrieve the new data from the form fields
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
             string contactNumber = txtContact.Text.Trim();
             string email = txtEmail.Text.Trim();
 
-            // Basic Validation
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             {
                 MessageBox.Show("First Name and Last Name cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -324,8 +288,7 @@ namespace MUGEN_SYSTEM
             {
                 using (var db = new MugenSystemDBEntities())
                 {
-                    // 1. Find the existing Passenger entity
-                    // FIX: Using db.Passengers (assuming plural collection name) and singular type Passenger
+
                     var passengerToUpdate = db.Passengers.FirstOrDefault(p => p.PassengerID == passengerId);
 
                     if (passengerToUpdate != null)
@@ -336,7 +299,6 @@ namespace MUGEN_SYSTEM
                         passengerToUpdate.ContactNumber = contactNumber;
                         passengerToUpdate.Email = email;
 
-                        // 3. Save the changes to the database
                         db.SaveChanges();
 
                         MessageBox.Show($"Passenger ID {passengerId} details updated successfully.", "Update Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -369,33 +331,33 @@ namespace MUGEN_SYSTEM
 
             if (confirmResult == DialogResult.Yes)
             {
-                // 1. Instantiate and show the login form
                 LoginForm loginForm = new LoginForm();
                 loginForm.Show();
 
-                // 2. CRITICAL: Close ALL related forms (including hidden parents like StaffDashboard)
-                // We iterate through all open forms and close them except the new LoginForm.
-                // Use a list to avoid modifying the collection while iterating
                 List<Form> formsToClose = new List<Form>();
 
                 foreach (Form form in Application.OpenForms)
                 {
-                    // Do not close the new LoginForm
+                   
                     if (form != loginForm)
                     {
                         formsToClose.Add(form);
                     }
                 }
 
-                // 3. Close the identified forms (PassengerForm, StaffDashboard, etc.)
                 foreach (Form form in formsToClose)
                 {
                     form.Close();
                 }
-
-                // The PassengerForm will close itself here via the formsToClose loop, 
-                // but adding this.Close() one last time is harmless if it hasn't closed yet.
                 this.Close();
+            }
+        }
+
+        private void comboAvailableSeats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboAvailableSeats.SelectedItem != null)
+            {
+                txtSeats.Text = comboAvailableSeats.SelectedItem.ToString();
             }
         }
     }

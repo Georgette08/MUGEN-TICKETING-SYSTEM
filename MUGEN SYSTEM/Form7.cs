@@ -24,6 +24,15 @@ namespace MUGEN_SYSTEM
         private List<ScheduleComboItem> AllStationsList = new List<ScheduleComboItem>();
         private List<ScheduleComboItem> availableTrains = new List<ScheduleComboItem>();
 
+        private Dictionary<string, string> TrainDefaultLines = new Dictionary<string, string>()
+        {
+            { "Nozomi", "Tokaido Shinkansen" },
+            { "Sakura", "Sanyo Shinkansen" },
+            { "Hayabusa", "Tohoku Shinkansen" },
+            { "Hayate", "Kyusu Shinkansen" },
+            { "Toki", "Hokkaido Shinkansen" }
+        };
+
         public SchedulesDashboard(UserAccount userLogin)
         {
             InitializeComponent();
@@ -75,78 +84,59 @@ namespace MUGEN_SYSTEM
         private void DefineValidRoutes()
         {
             ValidRoutes.Clear();
-
-            // *** FIX: Map Shinkansen Line Names to Valid Arrival Line Names ***
-
-            // 1. Tokiado Shinkansen (e.g., Tokyo area) can connect to:
-            ValidRoutes.Add("Tokaido Shinkansen", new List<string> {"Sanyo Shinkansen", "Tohoku Shinkansen","Hokkaido Shinkansen"});
-
-            // 2. Sanyo Shinkansen (e.g., Osaka/Kyoto area) can connect to:
-            ValidRoutes.Add("Sanyo Shinkansen", new List<string> {"Tokaido Shinkansen","Kyusu Shinkansen"});
-
-            // 3. Kyusu Shinkansen (e.g., Fukuoka area) can connect to:
-            ValidRoutes.Add("Kyusu Shinkansen", new List<string> {"Sanyo Shinkansen"});
-
-            // 4. Tohoku Shinkansen can connect to:
-            ValidRoutes.Add("Tohoku Shinkansen", new List<string> {"Tokaido Shinkansen","Hokkaido Shinkansen"});
-
-                    // 5. Hokkaido Shinkansen can connect to:
-            ValidRoutes.Add("Hokkaido Shinkansen", new List<string> {"Tohoku Shinkansen","Tokaido Shinkansen"});
-
-            // Add any other specific pairings based on your system's logic
+            // Corrected keys to match your station names exactly
+            ValidRoutes.Add("Tokaido Shinkansen", new List<string> { "Sanyo Shinkansen", "Tohoku Shinkansen", "Hokkaido Shinkansen" });
+            ValidRoutes.Add("Sanyo Shinkansen", new List<string> { "Tokaido Shinkansen", "Kyusu Shinkansen" });
+            ValidRoutes.Add("Kyusu Shinkansen", new List<string> { "Sanyo Shinkansen" });
+            ValidRoutes.Add("Tohoku Shinkansen", new List<string> { "Tokaido Shinkansen", "Hokkaido Shinkansen" });
+            ValidRoutes.Add("Hokkaido Shinkansen", new List<string> { "Tohoku Shinkansen", "Tokaido Shinkansen" });
         }
         private void PopulateComboBoxes()
         {
-            // 1. CLEAR DATA LISTS AND CONTROLS
             availableTrains.Clear();
-            AllStationsList.Clear(); // Clear the list before reloading
-
-            comboTrainID.Items.Clear();
-            comboDeparture.Items.Clear();
-            comboArrival.Items.Clear();
+            AllStationsList.Clear();
 
             try
             {
                 using (var db = new MugenSystemDBEntities())
                 {
-                    // 2A. LOAD TRAIN DATA from DB
-                    availableTrains = db.Trains
-                        .Select(t => new ScheduleComboItem { Id = t.TrainID, Name = t.TrainName })
-                        .ToList();
-
-                    // 2B. CRITICAL FIX: LOAD STATION DATA from DB (Since IDs change)
-                    // You must verify the table name 'Stations' and the column 'StationID' in your DB model.
+                    // 1. Fetch data from DB
                     AllStationsList = db.Stations
                         .Select(s => new ScheduleComboItem { Id = s.StationID, Name = s.StationName })
                         .ToList();
+
+                    availableTrains = db.Trains
+                        .Where(t => t.Status == "Active")
+                        .Select(t => new ScheduleComboItem { Id = t.TrainID, Name = t.TrainName })
+                        .ToList();
                 }
 
-                // 3. BIND TRAINS
-                comboTrainID.DataSource = availableTrains;
-                comboTrainID.DisplayMember = "Name";
-                comboTrainID.ValueMember = "Id";
-
-                // 4. BIND STATIONS (Using the master list loaded from the DB)
-                comboDeparture.DataSource = AllStationsList.ToList();
+                // 2. BIND DEPARTURE (Set Members BEFORE DataSource)
                 comboDeparture.DisplayMember = "Name";
                 comboDeparture.ValueMember = "Id";
+                comboDeparture.DataSource = AllStationsList.ToList();
 
-                comboArrival.DataSource = AllStationsList.ToList();
+                // 3. BIND ARRIVAL
                 comboArrival.DisplayMember = "Name";
                 comboArrival.ValueMember = "Id";
+                comboArrival.DataSource = AllStationsList.ToList();
 
-                // 5. SET DEFAULT SELECTION
+                // 4. BIND TRAINS LAST
+                comboTrainID.DisplayMember = "Name";
+                comboTrainID.ValueMember = "Id";
+                comboTrainID.DataSource = availableTrains;
+
+                // 5. MANUALLY TRIGGER THE CHAIN
                 if (availableTrains.Any())
-                    comboTrainID.SelectedIndex = 0;
-                if (AllStationsList.Any())
                 {
-                    comboDeparture.SelectedIndex = 0;
-                    comboArrival.SelectedIndex = 0;
+                    comboTrainID.SelectedIndex = 0;
+                    // Explicitly call to ensure Departure and Arrival filter immediately on load
+                    comboTrainID_SelectedIndexChanged(comboTrainID, EventArgs.Empty);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading data: {ex.Message}", "Database Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
         private void ClearInputFields()
@@ -167,85 +157,83 @@ namespace MUGEN_SYSTEM
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // 1. Retrieve the selected ScheduleComboItem objects
             var selectedTrain = comboTrainID.SelectedItem as ScheduleComboItem;
             var selectedDepStation = comboDeparture.SelectedItem as ScheduleComboItem;
             var selectedArrStation = comboArrival.SelectedItem as ScheduleComboItem;
 
-            // Define the required buffer time (e.g., 10 minutes)
-            TimeSpan requiredBuffer = TimeSpan.FromMinutes(10);
-            DateTime newDepartureTime = dtpDepartureTime.Value;
+            DateTime depTime = dtpDepartureTime.Value;
+            DateTime arrTime = dtpArrivalTime.Value;
 
-            // --- 2. INPUT VALIDATION ---
-
-            // Check for missing data
+            // 1. BASIC VALIDATION
             if (selectedTrain == null || selectedDepStation == null || selectedArrStation == null)
             {
-                MessageBox.Show("Please select a Train and both Station names.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please complete all selections.", "Error");
                 return;
             }
 
-            // Check for same station selection
-            if (selectedDepStation.Id == selectedArrStation.Id)
+            // 2. TIME LOGIC: Arrival must be after Departure
+            if (arrTime <= depTime)
             {
-                MessageBox.Show("Departure and Arrival Stations cannot be the same.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Arrival Time must be later than Departure Time.", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // --- 3. LINQ FIX: Calculate Boundaries in C# (Client-Side) ---
-            // Calculate the time boundaries BEFORE querying the database to avoid the 'NotSupportedException'.
-            DateTime startTimeWindow = newDepartureTime.Subtract(requiredBuffer);
-            DateTime endTimeWindow = newDepartureTime.Add(requiredBuffer);
 
             try
             {
                 using (var db = new MugenSystemDBEntities())
                 {
-                    // --- 4. TIME CONFLICT CHECK ---
+                    // 3. STATION OCCUPANCY CHECK
+                    // Checks if ANOTHER train is already using the Departure Station at this time
+                    bool stationBusy = db.Schedule.Any(s =>
+                        s.DepartureStationID == selectedDepStation.Id &&
+                        s.DepartureTime == depTime &&
+                        s.TrainID != selectedTrain.Id); // Allows the same train, blocks others
 
-                    // This query checks if any existing schedule for the SAME TRAINID 
-                    // has a departure time within the calculated time window (10 minutes before to 10 minutes after).
-                    bool timeConflict = db.Schedule.Any(s =>
-                        s.TrainID == selectedTrain.Id &&
-                        s.DepartureTime >= startTimeWindow &&
-                        s.DepartureTime <= endTimeWindow
-                    );
-
-                    if (timeConflict)
+                    if (stationBusy)
                     {
-                        MessageBox.Show($"A schedule conflict exists. Train '{selectedTrain.Name}' is already booked to depart within {requiredBuffer.TotalMinutes} minutes of the time you selected.",
-                                        "Time Conflict Detected",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                        return; // Stop the function and do not save
+                        MessageBox.Show("This station is already occupied by another train at this time.",
+                                        "Station Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    // -----------------------------------------------------------
 
-                    // 5. DATABASE SAVE (If no conflicts are found)
+                    // 4. TRAIN CONFLICT CHECK (Existing Logic)
+                    // Prevent the same train from being in two places at once
+                    TimeSpan buffer = TimeSpan.FromMinutes(10);
+                    DateTime startBuf = depTime.Subtract(buffer);
+                    DateTime endBuf = depTime.Add(buffer);
+
+                    bool trainBusy = db.Schedule.Any(s =>
+                        s.TrainID == selectedTrain.Id &&
+                        s.DepartureTime >= startBuf &&
+                        s.DepartureTime <= endBuf);
+
+                    if (trainBusy)
+                    {
+                        MessageBox.Show($"Train {selectedTrain.Name} is already scheduled near this time.");
+                        return;
+                    }
+
+                    // 5. SAVE RECORD
                     var newSchedule = new Schedule
                     {
                         TrainID = selectedTrain.Id,
                         DepartureStationID = selectedDepStation.Id,
                         ArrivalStationID = selectedArrStation.Id,
-                        DepartureTime = newDepartureTime,
-                        ArrivalTime = dtpArrivalTime.Value
+                        DepartureTime = depTime,
+                        ArrivalTime = arrTime
                     };
 
                     db.Schedule.Add(newSchedule);
                     db.SaveChanges();
 
-                    MessageBox.Show("Schedule added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 6. REFRESH DATA GRID AND INPUTS
-                    LoadSchedulesDataGrid(); // Ensures the new data appears in the grid immediately
+                    MessageBox.Show("Schedule added successfully!");
+                    LoadSchedulesDataGrid();
                     ClearInputFields();
                 }
             }
             catch (Exception ex)
             {
-                // Handle unexpected system errors (e.g., database connection issues)
-                MessageBox.Show($"An error occurred: {ex.InnerException?.Message ?? ex.Message}",
-                                 "System Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -372,109 +360,130 @@ namespace MUGEN_SYSTEM
             TextBox txtScheduleID = this.Controls.Find("txtScheduleID", true).FirstOrDefault() as TextBox;
             if (txtScheduleID != null) txtScheduleID.Text = selectedScheduleID.ToString();
         }
-        private void ShowandManageForm(Form newform)
-        {
-            this.Hide();
+     //   private void ShowandManageForm(Form newform)
+     //   {
+         //   this.Hide();
+//
+         //   newform.ShowDialog();
 
-            newform.ShowDialog();
+         //   this.Show();
+      //  }
+       // private void btnStations_Click(object sender, EventArgs e)
+       // {
+       //     StationsDashboard stationsDashboard = new StationsDashboard(userLogIn);
+       //     ShowandManageForm(stationsDashboard);
+       // }
 
-            this.Show();
-        }
-        private void btnStations_Click(object sender, EventArgs e)
-        {
-            StationsDashboard stationsDashboard = new StationsDashboard(userLogIn);
-            ShowandManageForm(stationsDashboard);
-        }
+       // private void btnTrains_Click(object sender, EventArgs e)
+    //    {
+         //   TrainsDashboard trainsDashboard = new TrainsDashboard(userLogIn);
+         //   ShowandManageForm(trainsDashboard);
+       // }
 
-        private void btnTrains_Click(object sender, EventArgs e)
-        {
-            TrainsDashboard trainsDashboard = new TrainsDashboard(userLogIn);
-            ShowandManageForm(trainsDashboard);
-        }
+       // private void btnFares_Click(object sender, EventArgs e)
+       // {
+        //    FaresDashboard faresDashboard = new FaresDashboard(userLogIn);
+         //   ShowandManageForm(faresDashboard);
+       // }
 
-        private void btnFares_Click(object sender, EventArgs e)
-        {
-            FaresDashboard faresDashboard = new FaresDashboard(userLogIn);
-            ShowandManageForm(faresDashboard);
-        }
+      //  private void btnAccounts_Click(object sender, EventArgs e)
+    //    {
+          //  UserDashboard userDashboard = new UserDashboard(userLogIn);
+          //  ShowandManageForm(userDashboard);
+       // }
 
-        private void btnAccounts_Click(object sender, EventArgs e)
-        {
-            UserDashboard userDashboard = new UserDashboard(userLogIn);
-            ShowandManageForm(userDashboard);
-        }
+       // private void btnDashboard_Click(object sender, EventArgs e)
+      //  {
+          /// <summary>
+          ///  AdminDashboard adminDashboard = new AdminDashboard(userLogIn);
+          /// </summary>
+          /// <param //name="sender"></param>
+          /// <param// name="e"></param>
+          //  ShowandManageForm(adminDashboard);
+       // }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            AdminDashboard adminDashboard = new AdminDashboard(userLogIn);
-            ShowandManageForm(adminDashboard);
-        }
+      //  private void btnLogOut_Click(object sender, EventArgs e)
+      //  {
+         //   var confirmResult = MessageBox.Show(
+            // "Are you sure you want to log out?",
+            // "Confirm Logout",
+            // MessageBoxButtons.YesNo,
+            // MessageBoxIcon.Question
+         //);
+//            if (confirmResult == DialogResult.Yes)
+           // {
+            //    LoginForm login = new LoginForm();
 
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            var confirmResult = MessageBox.Show(
-             "Are you sure you want to log out?",
-             "Confirm Logout",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question
-         );
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                LoginForm login = new LoginForm();
-
-                ShowandManageForm(login);
-            }
-        }
+            //    ShowandManageForm(login);
+         //   }
+       // }
 
         private void comboTrainID_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!(comboTrainID.SelectedItem is ScheduleComboItem selectedTrain)) return;
 
-        }
-
-        private void comboDeparture_SelectedIndexChanged(object sender, EventArgs e)
-        {  // Temporarily remove the handler to avoid recursive binding/filtering issues
-            comboArrival.SelectedIndexChanged -= comboDeparture_SelectedIndexChanged;
-
-            // The selected item contains the StationID (Id) and the Line Name (Name)
-            var selectedDeparture = comboDeparture.SelectedItem as ScheduleComboItem;
-
-            // Check for null selection
-            if (selectedDeparture == null || string.IsNullOrEmpty(selectedDeparture.Name))
+            // 2. Look up the designated line (e.g., Nozomi -> Tokaido Shinkansen)
+            if (TrainDefaultLines.TryGetValue(selectedTrain.Name, out string designatedLine))
             {
-                comboArrival.DataSource = null;
-                return;
-            }
+                // 3. Find the matching station in your master list
+                var targetStation = AllStationsList.FirstOrDefault(s => s.Name == designatedLine);
 
-            // 1. Look up the valid arrival names using the Departure Line Name
-            if (ValidRoutes.TryGetValue(selectedDeparture.Name, out List<string> validArrivalNames))
-            {
-                // 2. Filter the complete AllStationsList to find the ScheduleComboItems 
-                //    that match the valid arrival NAMES.
-                var filteredArrivalStations = AllStationsList
-                    .Where(s => validArrivalNames.Contains(s.Name))
-                    .ToList();
+                if (targetStation != null)
+                {
+                    // Temporarily detach events to prevent logic loops
+                    comboDeparture.SelectedIndexChanged -= comboDeparture_SelectedIndexChanged;
 
-                // 3. Rebind the Arrival ComboBox with the filtered list
-                comboArrival.DataSource = filteredArrivalStations;
-                comboArrival.DisplayMember = "Name";
-                comboArrival.ValueMember = "Id";
+                    // 4. LOCK DEPARTURE: Filter list to show only the 1 valid line
+                    var lockedDepList = AllStationsList.Where(s => s.Name == designatedLine).ToList();
+                    comboDeparture.DataSource = lockedDepList;
+                    comboDeparture.DisplayMember = "Name";
+                    comboDeparture.ValueMember = "Id";
+                    comboDeparture.Enabled = false; // "Read Only" lock
 
-                // 4. Reset selection to the first item
-                if (filteredArrivalStations.Any())
-                    comboArrival.SelectedIndex = 0;
-                else
-                    comboArrival.DataSource = null; // Clear if no valid routes found
+                    // 5. FILTER ARRIVAL: Display ONLY suggested stations for this line
+                    UpdateArrivalStations(designatedLine);
+
+                    // Re-attach event handler
+                    comboDeparture.SelectedIndexChanged += comboDeparture_SelectedIndexChanged;
+                }
             }
             else
             {
-                // If the selected Departure Station isn't defined in the map, clear the Arrival box
-                comboArrival.DataSource = null;
-                comboArrival.Items.Clear();
+                // Reset if no specific train mapping is found
+                comboDeparture.Enabled = true;
+                comboDeparture.DataSource = AllStationsList.ToList();
+                comboArrival.DataSource = AllStationsList.ToList();
             }
+        }
+        private void comboDeparture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboDeparture.SelectedItem is ScheduleComboItem selectedDep)
+            {
+                UpdateArrivalStations(selectedDep.Name);
+            }
+        }
+        private void UpdateArrivalStations(string departureLineName)
+        {
+            if (ValidRoutes.TryGetValue(departureLineName, out List<string> suggestedNames))
+            {
+                var filteredArrivals = AllStationsList
+                    .Where(s => suggestedNames.Contains(s.Name))
+                    .ToList();
 
-            // Re-add the handler
-            comboArrival.SelectedIndexChanged += comboDeparture_SelectedIndexChanged;
+                comboArrival.DataSource = filteredArrivals;
+                comboArrival.DisplayMember = "Name";
+                comboArrival.ValueMember = "Id";
+
+                if (filteredArrivals.Any())
+                {
+                    comboArrival.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void dtpArrivalTime_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
